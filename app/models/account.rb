@@ -10,10 +10,14 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   include Slugable
   include Frozen
 
+  module Constants
+    IMMUTABLE_FIELDS = [:user_id].freeze
+  end
+
   # concern config
   source_for_slug :name
   # todo(juneja) concerns and annotate gem do not work together :[
-  # frozen_fields [:user_id]
+  freeze_fields Account::Constants::IMMUTABLE_FIELDS
 
   # associations
   belongs_to :user
@@ -21,7 +25,7 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   has_many :internal_transfer_logs
 
   # validations
-  # before_validation :validate_for_frozen_fields, on: :update
+  before_validation :validate_for_frozen_fields, on: :update
   before_validation :generate_slug, if: :name_changed?
 
   validates_presence_of :name

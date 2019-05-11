@@ -4,9 +4,13 @@ class Category < ApplicationRecord
   include Slugable
   include Frozen
 
+  module Constants
+    IMMUTABLE_FIELDS = [:eligible_mode].freeze
+  end
+
   # concern config
   source_for_slug :name
-  freeze_fields [:eligible_mode]
+  freeze_fields Category::Constants::IMMUTABLE_FIELDS
 
   enum eligible_mode: {
       creditable: 0,

@@ -5,25 +5,23 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 # todo(juneja) reseach devise breaks weirdly if frozen constants module is included
-=begin
   include Frozen
 
   # constants
-  module UserConstants
+  module Constants
     IMMUTABLE_FIELDS = [:email]
   end
 
-
   # concern config
-  frozen_fields User::UserConstants::IMMUTABLE_FIELDS
-=end
-  # associations
+  freeze_fields User::Constants::IMMUTABLE_FIELDS
+
+# associations
   has_many :categories
   has_many :accounts
   has_many :expense_logs
 
   # validations
-  # before_validation :validate_for_frozen_fields, on: :update
+  before_validation :validate_for_frozen_fields, on: :update
 
   # scopes
 
