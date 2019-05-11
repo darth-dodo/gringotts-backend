@@ -7,6 +7,6 @@ class CreateCategory < ActiveRecord::Migration[5.2]
       t.timestamp :inactivated_at
       t.references :user, index: true, null: false
     end
-    add_foreign_key :categories, :users, null: false
+    add_foreign_key :categories, :users
   end
 end

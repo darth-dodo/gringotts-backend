@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_123313) do
+ActiveRecord::Schema.define(version: 2019_05_11_124245) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,20 @@ ActiveRecord::Schema.define(version: 2019_05_11_123313) do
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 
+  create_table "expense_logs", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "account_id", null: false
+    t.bigint "category_id", null: false
+    t.float "amount", null: false
+    t.text "note", null: false
+    t.integer "mode", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_expense_logs_on_account_id"
+    t.index ["category_id"], name: "index_expense_logs_on_category_id"
+    t.index ["user_id"], name: "index_expense_logs_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +79,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_123313) do
 
   add_foreign_key "accounts", "users"
   add_foreign_key "categories", "users"
+  add_foreign_key "expense_logs", "accounts"
+  add_foreign_key "expense_logs", "categories"
+  add_foreign_key "expense_logs", "users"
 end

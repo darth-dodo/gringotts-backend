@@ -9,6 +9,6 @@ class CreateAccounts < ActiveRecord::Migration[5.2]
       t.references :user, index: true, null: false
       t.timestamps
     end
-    add_foreign_key :accounts, :users, null: false
+    add_foreign_key :accounts, :users
   end
 end
