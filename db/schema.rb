@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_124245) do
+ActiveRecord::Schema.define(version: 2019_05_11_125458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -65,6 +65,17 @@ ActiveRecord::Schema.define(version: 2019_05_11_124245) do
     t.index ["user_id"], name: "index_expense_logs_on_user_id"
   end
 
+  create_table "internal_transfer_logs", force: :cascade do |t|
+    t.bigint "source_account_id", null: false
+    t.bigint "destination_account_id", null: false
+    t.bigint "expense_log_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destination_account_id"], name: "index_internal_transfer_logs_on_destination_account_id"
+    t.index ["expense_log_id"], name: "index_internal_transfer_logs_on_expense_log_id"
+    t.index ["source_account_id"], name: "index_internal_transfer_logs_on_source_account_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -82,4 +93,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_124245) do
   add_foreign_key "expense_logs", "accounts"
   add_foreign_key "expense_logs", "categories"
   add_foreign_key "expense_logs", "users"
+  add_foreign_key "internal_transfer_logs", "accounts", column: "destination_account_id"
+  add_foreign_key "internal_transfer_logs", "accounts", column: "source_account_id"
+  add_foreign_key "internal_transfer_logs", "expense_logs"
 end
