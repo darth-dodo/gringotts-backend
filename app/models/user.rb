@@ -4,7 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
-# todo(juneja) reseach devise breaks weirdly if frozen constants module is included
   include Frozen
 
   # constants

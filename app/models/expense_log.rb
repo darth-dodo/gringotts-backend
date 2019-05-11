@@ -1,8 +1,25 @@
 class ExpenseLog < ApplicationRecord
+  # imports
+  include Frozen
 
   # constants
+  module Constants
+    IMMUTABLE_FIELDS = [
+        :mode,
+        :amount,
+        :account_id,
+        :category_id,
+        :user_id
+    ].freeze
+  end
+
+  enum mode: {
+      credit: 0,
+      debit: 1
+  }
 
   # concern config
+  freeze_fields ExpenseLog::Constants::IMMUTABLE_FIELDS
 
   # associations
   belongs_to :user
@@ -13,10 +30,29 @@ class ExpenseLog < ApplicationRecord
   has_one :internal_transfer_log
 
   # validations
-
+  before_validation :validate_for_frozen_fields, on: :update
+  validates_numericality_of :amount, greater_than_or_equal_to: 0
+  validates_presence_of :mode
+  validates_presence_of :account
+  validates_presence_of :user
+  validates_presence_of :category
+  validates :category_belongs_to_relevant_mode
   # scopes
 
   # callbacks
+  # todo(Nagekar) this feels very hacky
+  def category_belongs_to_relevant_mode
+    category_mode = self.category.eligible_mode
+    category_mode_mappings = Category::Constants::MODE_MAPPINGS
+
+    potential_log_mappings = category_mode_mappings[category_mode]
+
+    current_mode = self.mode
+
+    unless category_mode_mappings.include? current_mode
+      self.errors.add(:base, "Category should be of #{category_mode.to_s.humanize} family across the mode #{current_mode.to_s.humanize}")
+    end
+  end
 
   # instance methods
 

@@ -6,6 +6,11 @@ class Category < ApplicationRecord
 
   module Constants
     IMMUTABLE_FIELDS = [:eligible_mode].freeze
+    # category_mode: log_mode
+    MODE_MAPPINGS = {
+        creditable: [:credit],
+        debitable: [:debit]
+    }
   end
 
   # concern config
