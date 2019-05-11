@@ -666,3 +666,13 @@ FOREIGN KEY ("expense_log_id")
   ↳ db/seeds.rb:50
   [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
   ↳ db/seeds.rb:72
+  [1m[35m (10.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/gems/ruby-2.6.0/bin/annotate:23
+  [1m[35m (18.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/gems/ruby-2.6.0/bin/annotate:23
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/gems/ruby-2.6.0/bin/annotate:23
+  [1m[35m (20.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/gems/ruby-2.6.0/bin/annotate:23
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/gems/ruby-2.6.0/bin/annotate:23
