@@ -1,10 +1,25 @@
 class ExpenseLog < ApplicationRecord
+
+  # constants
+
+  # concern config
+
+  # associations
   belongs_to :user
   belongs_to :account
   belongs_to :category
 
   # todo(juneja) confirm this has one relationship
   has_one :internal_transfer_log
+
+  # validations
+
+  # scopes
+
+  # callbacks
+
+  # instance methods
+
 end
 
 # == Schema Information

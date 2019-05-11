@@ -1,7 +1,10 @@
 class Category < ApplicationRecord
+
+  # imports
   include Slugable
   include Frozen
 
+  # concern config
   source_for_slug :name
   freeze_fields [:eligible_mode]
 
@@ -25,9 +28,9 @@ class Category < ApplicationRecord
 
   # scopes
 
-  # callbacks
-
   # instance methods
+
+  # callbacks
 
 end
 

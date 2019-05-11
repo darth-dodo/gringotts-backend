@@ -19,9 +19,13 @@ def create_seed_users
                ])
 end
 
+def fetch_admin_user
+  User.find_by_email('admin@gringotts.com')
+end
+
 def create_creditable_categories
 
-  admin_user = User.find_by_email('admin@gringotts.com')
+  admin_user = fetch_admin_user
   return if admin_user.blank?
 
   Category.create!([
@@ -44,7 +48,7 @@ def create_creditable_categories
 end
 
 def create_debitable_categories
-  admin_user = User.find_by_email('admin@gringotts.com')
+  admin_user = fetch_admin_user
   return if admin_user.blank?
 
   Category.create!([
@@ -67,12 +71,38 @@ def create_debitable_categories
 
 end
 
+def create_dummy_accounts
+  admin_user = fetch_admin_user
+  return if admin_user.blank?
+
+  Account.create!([
+                      {
+                          user: admin_user,
+                          current_value: 100,
+                          name: "Salary"
+                      },
+                      {
+                          user: admin_user,
+                          current_value: 100,
+                          name: "Savings"
+                      },
+                      {
+                          user: admin_user,
+                          current_value: 100,
+                          name: "Cash"
+                      }
+
+                  ])
+
+end
+
 if Rails.env.development?
 
   ActiveRecord::Base.transaction do
     create_seed_users
     create_creditable_categories
     create_debitable_categories
+    create_dummy_accounts
   end
 
 end

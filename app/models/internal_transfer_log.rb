@@ -1,7 +1,25 @@
 class InternalTransferLog < ApplicationRecord
+  # imports
+
+  # constants
+
+  # concern config
+
+  # enums
+
+  # associations
   belongs_to :account, class_name: 'Account', foreign_key: 'source_account_id'
   belongs_to :account, class_name: 'Account', foreign_key: 'destination_account_id'
   belongs_to :expense_log
+
+  # validations
+
+  # scopes
+
+  # callbacks
+
+  # instance methods
+
 end
 
 # == Schema Information

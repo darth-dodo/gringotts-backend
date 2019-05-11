@@ -1,12 +1,35 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, 
+  devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
+# todo(juneja) reseach devise breaks weirdly if frozen constants module is included
+=begin
+  include Frozen
+
+  # constants
+  module UserConstants
+    IMMUTABLE_FIELDS = [:email]
+  end
+
+
+  # concern config
+  frozen_fields User::UserConstants::IMMUTABLE_FIELDS
+=end
+  # associations
   has_many :categories
   has_many :accounts
   has_many :expense_logs
+
+  # validations
+  # before_validation :validate_for_frozen_fields, on: :update
+
+  # scopes
+
+  # instance methods
+
+  # callbacks
 
 end
 

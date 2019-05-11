@@ -11,3 +11,7 @@
 ```sh
 annotate --exclude tests,fixtures,factories,serializers -p bottom -i --show-indexes -k --show-foreign-keys -s --classified-sort
 ```
+- Drop db, create db, migrate db, seed db
+```sh
+dropdb gringotts_dev && createdb gringotts_dev && rake db:migrate && rake db:seed
+```
