@@ -1,0 +1,668 @@
+  [1m[35m (103.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (13.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (11.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DeviseCreateUsers (20190428063126)
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (32.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:5
+  [1m[35m (7.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:39
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (11.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428063126"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateActiveAdminComments (20190428111758)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428111758"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCategory (20190511122444)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (18.8ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "eligible_mode" integer NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL)[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (3.8ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (26.6ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511122444_create_category.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511122444"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateAccounts (20190511123313)
+  [1m[35m (3.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (19.9ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "note" text, "current_value" float NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (11.6ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511123313"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateExpenseLogs (20190511124245)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "expense_logs" ("id" bigserial primary key, "user_id" bigint NOT NULL, "account_id" bigint NOT NULL, "category_id" bigint NOT NULL, "amount" float NOT NULL, "note" text NOT NULL, "mode" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (2.9ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_user_id" ON "expense_logs"  ("user_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_account_id" ON "expense_logs"  ("account_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (2.6ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_category_id" ON "expense_logs"  ("category_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (10.8ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_fb3441750e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:13
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_dd96d3b456"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:14
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_c845512e09"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511124245"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateInternalTransferLogs (20190511125458)
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "internal_transfer_logs" ("id" bigserial primary key, "source_account_id" bigint NOT NULL, "destination_account_id" bigint NOT NULL, "expense_log_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (7.2ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_source_account_id" ON "internal_transfer_logs"  ("source_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_destination_account_id" ON "internal_transfer_logs"  ("destination_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_expense_log_id" ON "internal_transfer_logs"  ("expense_log_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (12.4ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_ba16e87cf5"
+FOREIGN KEY ("source_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:9
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_9c775a9b92"
+FOREIGN KEY ("destination_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:10
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_80be750fb2"
+FOREIGN KEY ("expense_log_id")
+  REFERENCES "expense_logs" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511125458"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (4.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (5.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-05-11 14:33:37.858938"], ["updated_at", "2019-05-11 14:33:37.858938"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (5.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (7.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@gringotts.com"], ["encrypted_password", "$2a$11$JCQph6ly49LmAR/Lst/wSuIgXloU5gv97xeff6PEApRlnTvSlQ08y"], ["created_at", "2019-05-11 14:33:47.552664"], ["updated_at", "2019-05-11 14:33:47.552664"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (19.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "demo@gringotts.com"], ["encrypted_password", "$2a$11$oRh3D1N5Y1E7p/KXnknZ5u9bK1xsLofhYTtJ1kCuB7SjxZXCcL73C"], ["created_at", "2019-05-11 14:33:47.893929"], ["updated_at", "2019-05-11 14:33:47.893929"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[35m (114.6ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (18.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (6.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DeviseCreateUsers (20190428063126)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (27.7ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:5
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:39
+  [1m[35m (2.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428063126"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateActiveAdminComments (20190428111758)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428111758"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCategory (20190511122444)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "eligible_mode" integer NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL)[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (21.6ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511122444_create_category.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511122444"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateAccounts (20190511123313)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (17.8ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "note" text, "current_value" float NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (5.9ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511123313"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateExpenseLogs (20190511124245)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "expense_logs" ("id" bigserial primary key, "user_id" bigint NOT NULL, "account_id" bigint NOT NULL, "category_id" bigint NOT NULL, "amount" float NOT NULL, "note" text NOT NULL, "mode" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_user_id" ON "expense_logs"  ("user_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_account_id" ON "expense_logs"  ("account_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_category_id" ON "expense_logs"  ("category_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (10.1ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_fb3441750e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:13
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_dd96d3b456"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:14
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_c845512e09"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511124245"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateInternalTransferLogs (20190511125458)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE TABLE "internal_transfer_logs" ("id" bigserial primary key, "source_account_id" bigint NOT NULL, "destination_account_id" bigint NOT NULL, "expense_log_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (5.6ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_source_account_id" ON "internal_transfer_logs"  ("source_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_destination_account_id" ON "internal_transfer_logs"  ("destination_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_expense_log_id" ON "internal_transfer_logs"  ("expense_log_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (15.8ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_ba16e87cf5"
+FOREIGN KEY ("source_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_9c775a9b92"
+FOREIGN KEY ("destination_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:10
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_80be750fb2"
+FOREIGN KEY ("expense_log_id")
+  REFERENCES "expense_logs" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511125458"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (3.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-05-11 14:34:21.285230"], ["updated_at", "2019-05-11 14:34:21.285230"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (3.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (1.4ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@gringotts.com"], ["encrypted_password", "$2a$11$O.YLVDPC06QNLrUyi7U30.h3FkNlDx9DxSUd5nOZJXIHsRQ6/kJmu"], ["created_at", "2019-05-11 14:34:28.057414"], ["updated_at", "2019-05-11 14:34:28.057414"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "demo@gringotts.com"], ["encrypted_password", "$2a$11$uhBhAIeSmmsn3p4Lpv3lwevnDbe1VKerwA9jcYFWcSad0gyhojakO"], ["created_at", "2019-05-11 14:34:28.235480"], ["updated_at", "2019-05-11 14:34:28.235480"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (188.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DeviseCreateUsers (20190428063126)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (20.2ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:5
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:39
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (1.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428063126"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateActiveAdminComments (20190428111758)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (38.4ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (8.9ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (3.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428111758"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (11.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCategory (20190511122444)
+  [1m[35m (2.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (39.2ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "eligible_mode" integer NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL)[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (33.9ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511122444_create_category.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511122444"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateAccounts (20190511123313)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "note" text, "current_value" float NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (20.6ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511123313"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateExpenseLogs (20190511124245)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (12.3ms)[0m  [1m[35mCREATE TABLE "expense_logs" ("id" bigserial primary key, "user_id" bigint NOT NULL, "account_id" bigint NOT NULL, "category_id" bigint NOT NULL, "amount" float NOT NULL, "note" text NOT NULL, "mode" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_user_id" ON "expense_logs"  ("user_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_account_id" ON "expense_logs"  ("account_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (4.0ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_category_id" ON "expense_logs"  ("category_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (17.1ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_fb3441750e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:13
+  [1m[35m (3.9ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_dd96d3b456"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:14
+  [1m[35m (4.3ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_c845512e09"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511124245"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateInternalTransferLogs (20190511125458)
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "internal_transfer_logs" ("id" bigserial primary key, "source_account_id" bigint NOT NULL, "destination_account_id" bigint NOT NULL, "expense_log_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_source_account_id" ON "internal_transfer_logs"  ("source_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_destination_account_id" ON "internal_transfer_logs"  ("destination_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_expense_log_id" ON "internal_transfer_logs"  ("expense_log_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (15.3ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_ba16e87cf5"
+FOREIGN KEY ("source_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:9
+  [1m[35m (2.9ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_9c775a9b92"
+FOREIGN KEY ("destination_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:10
+  [1m[35m (3.2ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_80be750fb2"
+FOREIGN KEY ("expense_log_id")
+  REFERENCES "expense_logs" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511125458"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (3.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-05-11 14:34:55.638096"], ["updated_at", "2019-05-11 14:34:55.638096"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_advisory_unlock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (13.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (2.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (5.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@gringotts.com"], ["encrypted_password", "$2a$11$MlAb04D8A4.5uF5YZrttf.PIUzehuwYPIiAupeiXuRLZbWspb0wj."], ["created_at", "2019-05-11 14:35:13.628803"], ["updated_at", "2019-05-11 14:35:13.628803"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (136.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "demo@gringotts.com"], ["encrypted_password", "$2a$11$Vp0rfvwKKw1MljxWBXrpruT0JKaF7UGYL9Am5Yx.7D6Z8yqxFUVWC"], ["created_at", "2019-05-11 14:35:14.079567"], ["updated_at", "2019-05-11 14:35:14.079567"]]
+  ↳ db/seeds.rb:10
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mCategory Create (8.4ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Salary"], ["slug", "salary"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Gift"], ["slug", "gift"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:27
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bonus"], ["slug", "bonus"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[35m (3.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[35m (95.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (15.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (10.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (7.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to DeviseCreateUsers (20190428063126)
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (29.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:5
+  [1m[35m (6.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:39
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  ↳ db/migrate/20190428063126_devise_create_users.rb:40
+  [1m[36mActiveRecord::SchemaMigration Create (9.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428063126"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateActiveAdminComments (20190428111758)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (13.4ms)[0m  [1m[35mCREATE TABLE "active_admin_comments" ("id" bigserial primary key, "namespace" character varying, "body" text, "resource_type" character varying, "resource_id" bigint, "author_type" character varying, "author_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_resource_type_and_resource_id" ON "active_admin_comments"  ("resource_type", "resource_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_author_type_and_author_id" ON "active_admin_comments"  ("author_type", "author_id")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:3
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_active_admin_comments_on_namespace" ON "active_admin_comments"  ("namespace")[0m
+  ↳ db/migrate/20190428111758_create_active_admin_comments.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190428111758"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateCategory (20190511122444)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "categories" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "eligible_mode" integer NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL)[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_categories_on_user_id" ON "categories"  ("user_id")[0m
+  ↳ db/migrate/20190511122444_create_category.rb:3
+  [1m[35m (41.6ms)[0m  [1m[35mALTER TABLE "categories" ADD CONSTRAINT "fk_rails_b8e2f7adfc"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511122444_create_category.rb:10
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511122444"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateAccounts (20190511123313)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "accounts" ("id" bigserial primary key, "name" character varying NOT NULL, "slug" character varying NOT NULL, "note" text, "current_value" float NOT NULL, "inactivated_at" timestamp, "user_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE  INDEX  "index_accounts_on_user_id" ON "accounts"  ("user_id")[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:3
+  [1m[35m (6.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD CONSTRAINT "fk_rails_b1e30bebc8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511123313_create_accounts.rb:12
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511123313"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateExpenseLogs (20190511124245)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (6.4ms)[0m  [1m[35mCREATE TABLE "expense_logs" ("id" bigserial primary key, "user_id" bigint NOT NULL, "account_id" bigint NOT NULL, "category_id" bigint NOT NULL, "amount" float NOT NULL, "note" text NOT NULL, "mode" integer NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_user_id" ON "expense_logs"  ("user_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_account_id" ON "expense_logs"  ("account_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE  INDEX  "index_expense_logs_on_category_id" ON "expense_logs"  ("category_id")[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:3
+  [1m[35m (27.6ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_fb3441750e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:13
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_dd96d3b456"
+FOREIGN KEY ("category_id")
+  REFERENCES "categories" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:14
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "expense_logs" ADD CONSTRAINT "fk_rails_c845512e09"
+FOREIGN KEY ("account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511124245_create_expense_logs.rb:15
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511124245"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+Migrating to CreateInternalTransferLogs (20190511125458)
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "internal_transfer_logs" ("id" bigserial primary key, "source_account_id" bigint NOT NULL, "destination_account_id" bigint NOT NULL, "expense_log_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_source_account_id" ON "internal_transfer_logs"  ("source_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_destination_account_id" ON "internal_transfer_logs"  ("destination_account_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_internal_transfer_logs_on_expense_log_id" ON "internal_transfer_logs"  ("expense_log_id")[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:3
+  [1m[35m (12.3ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_ba16e87cf5"
+FOREIGN KEY ("source_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:9
+  [1m[35m (1.6ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_9c775a9b92"
+FOREIGN KEY ("destination_account_id")
+  REFERENCES "accounts" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:10
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "internal_transfer_logs" ADD CONSTRAINT "fk_rails_80be750fb2"
+FOREIGN KEY ("expense_log_id")
+  REFERENCES "expense_logs" ("id")
+[0m
+  ↳ db/migrate/20190511125458_create_internal_transfer_logs.rb:11
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190511125458"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Load (4.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Create (7.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-05-11 14:37:08.126994"], ["updated_at", "2019-05-11 14:37:08.126994"]]
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT pg_advisory_unlock(1455748880368644120)[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/dodo/.rvm/rubies/ruby-2.6.0/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:72
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (1.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "admin@gringotts.com"], ["encrypted_password", "$2a$11$bPO9uBjWuKJ/XR8Ph/SuMefhpgpg52y7Vi81i3zxZmFC56wiEVAP."], ["created_at", "2019-05-11 14:37:16.253366"], ["updated_at", "2019-05-11 14:37:16.253366"]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "demo@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "demo@gringotts.com"], ["encrypted_password", "$2a$11$xwEe9JXY8uYaNR6cIWGXjujLuecrcZOiVIohF2tAdssnMEhVwMNwW"], ["created_at", "2019-05-11 14:37:16.444959"], ["updated_at", "2019-05-11 14:37:16.444959"]]
+  ↳ db/seeds.rb:10
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:24
+  [1m[36mCategory Create (5.8ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Salary"], ["slug", "salary"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mCategory Create (1.3ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Gift"], ["slug", "gift"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mCategory Create (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Bonus"], ["slug", "bonus"], ["eligible_mode", 0], ["user_id", 1]]
+  ↳ db/seeds.rb:27
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "admin@gringotts.com"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:47
+  [1m[36mCategory Create (0.9ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Commute"], ["slug", "commute"], ["eligible_mode", 1], ["user_id", 1]]
+  ↳ db/seeds.rb:50
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Food"], ["slug", "food"], ["eligible_mode", 1], ["user_id", 1]]
+  ↳ db/seeds.rb:50
+  [1m[36mCategory Create (0.7ms)[0m  [1m[32mINSERT INTO "categories" ("name", "slug", "eligible_mode", "user_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Recreation"], ["slug", "recreation"], ["eligible_mode", 1], ["user_id", 1]]
+  ↳ db/seeds.rb:50
+  [1m[35m (5.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:72
