@@ -1,9 +1,16 @@
 class InternalTransferLog < ApplicationRecord
   # imports
+  include Frozen
 
   # constants
+  module Constants
+    IMMUTABLE_FIELDS = [:destination_account,
+                        :expense_log,
+                        :source_account].freeze
+  end
 
   # concern config
+  freeze_fields InternalTransferLog::Constants::IMMUTABLE_FIELDS
 
   # enums
 
@@ -13,10 +20,34 @@ class InternalTransferLog < ApplicationRecord
   belongs_to :expense_log
 
   # validations
+  validates_presence_of :destination_account
+  validates_presence_of :source_account
+  validates_presence_of :expense_log
+  validate :source_and_destination_accounts_should_belong_to_the_same_user, on: :create
+  validate :source_and_destination_accounts_should_be_active, on: :create
 
   # scopes
 
   # callbacks
+  def source_and_destination_accounts_should_belong_to_the_same_user
+    unless self.expense_log.user == self.destination_account.user &&  self.expense_log.user == self.source_account.user
+      errors.add(:base, "Source and Destination accounts for internal transfer should belong to the the same user!")
+    end
+
+    # todo(juneja) explain nagekar about false in validations
+    false
+  end
+
+  def source_and_destination_accounts_should_be_active
+    unless self.source_account.active?
+      self.errors.add(:base, "Source account is inactive!")
+    end
+
+    unless self.destination_account.active?
+      self.errors.add(:base, "Destination account is inactive!")
+    end
+
+  end
 
   # instance methods
 

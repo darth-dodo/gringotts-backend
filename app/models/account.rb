@@ -14,9 +14,12 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
     IMMUTABLE_FIELDS = [:user_id].freeze
   end
 
+  # # model config
+  # # Todo(juneja) learn the edge cases of delegate
+  # delegate :name, to: :user
+
   # concern config
   source_for_slug :name
-  # todo(juneja) concerns and annotate gem do not work together :[
   freeze_fields Account::Constants::IMMUTABLE_FIELDS
 
   # associations
@@ -37,8 +40,12 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   validates_numericality_of :current_value, greater_than_or_equal_to: 0
   before_save :account_should_start_with_zero_value, on: :create
 
+  # model config
+
   # scopes
   scope :for_user, ->(user) { where(user_id: user.id) }
+  scope :for_slug, ->(slug) { where(slug: slug) }
+
 
   # callbacks
   def account_should_start_with_zero_value
@@ -46,6 +53,10 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   end
 
   # instance methods
+  # todo(juneja) create an inactivation concern
+  def active?
+    self.inactivated_at.present?
+  end
 
 end
 

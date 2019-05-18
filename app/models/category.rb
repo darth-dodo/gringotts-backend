@@ -36,9 +36,19 @@ class Category < ApplicationRecord
   validates_presence_of :eligible_mode
 
   # scopes
+  scope :for_user, ->(user) { where(user_id: user.id) }
+  scope :for_slug, ->(slug) { where(slug: slug) }
+
+  # todo(juneja) constantize this and include this as an after commit on user to create this default
+  # todo(juneja) category
+  # todo(juneja) this category is supposed to be immutable by user
+  scope :internal_transfer, ->() { where(slug: "internal-transfer").first }
+
+  # def get_internal_transfer
+  #   self.for_slug('internal-transfer').first
+  # end
 
   # instance methods
-
   # callbacks
 
 end

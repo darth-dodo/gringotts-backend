@@ -36,7 +36,7 @@ class ExpenseLog < ApplicationRecord
   validates_presence_of :account
   validates_presence_of :user
   validates_presence_of :category
-  validates :category_belongs_to_relevant_mode
+  # validate :category_belongs_to_relevant_mode
   # scopes
 
   # callbacks

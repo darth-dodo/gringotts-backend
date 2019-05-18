@@ -66,7 +66,13 @@ def create_debitable_categories
                            name: 'Recreation',
                            user: admin_user,
                            eligible_mode: :debitable
-                       }
+                       },
+                       {
+                           name: 'Internal Transfer',
+                           user: admin_user,
+                           eligible_mode: :debitable
+                       },
+
                    ])
 
 end
@@ -78,7 +84,7 @@ def create_dummy_accounts
   Account.create!([
                       {
                           user: admin_user,
-                          current_value: 100,
+                          current_value: 1000,
                           name: "Salary"
                       },
                       {
@@ -96,6 +102,38 @@ def create_dummy_accounts
 
 end
 
+def create_seed_transfer_expense_log
+  eager_loaded_user = User.includes(:categories, :accounts).first
+  eager_loaded_user_categories = eager_loaded_user.categories
+  eager_loaded_user_accounts = eager_loaded_user.accounts
+  salary_account = eager_loaded_user_accounts.for_slug('salary').first
+
+  seed_expense_log = ExpenseLog.new
+  seed_expense_log.user = eager_loaded_user
+  seed_expense_log.category = eager_loaded_user_categories.for_slug('salary').first
+  seed_expense_log.account = salary_account
+  seed_expense_log.amount = 10000
+  seed_expense_log.mode = :credit
+  seed_expense_log.save
+
+end
+
+def create_internal_transfer_expense_log
+  eager_loaded_user = User.includes(:categories, :accounts).first
+  eager_loaded_user_categories = eager_loaded_user.categories
+  eager_loaded_user_accounts = eager_loaded_user.accounts
+  internal_transfer_category = eager_loaded_user_categories.internal_transfer
+  salary_account = eager_loaded_user_accounts.for_slug('salary').first
+
+  new_expense_log = ExpenseLog.new
+  new_expense_log.user = eager_loaded_user
+  new_expense_log.account = salary_account
+  new_expense_log.category = internal_transfer_category
+  new_expense_log.amount = 100
+  new_expense_log.mode = :debit
+  new_expense_log.save
+end
+
 if Rails.env.development?
 
   ActiveRecord::Base.transaction do
@@ -103,6 +141,8 @@ if Rails.env.development?
     create_creditable_categories
     create_debitable_categories
     create_dummy_accounts
+    create_seed_transfer_expense_log
+    create_internal_transfer_expense_log
   end
 
 end

@@ -5,7 +5,7 @@ class CreateExpenseLogs < ActiveRecord::Migration[5.2]
       t.references :account, index: true, null: false
       t.references :category,index: true, null: false
       t.float :amount, null: false
-      t.text :note, null: false
+      t.text :note
       t.integer :mode, null: false
       t.timestamps
     end

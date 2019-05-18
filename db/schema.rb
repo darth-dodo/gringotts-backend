@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_180747) do
     t.bigint "account_id", null: false
     t.bigint "category_id", null: false
     t.float "amount", null: false
-    t.text "note", null: false
+    t.text "note"
     t.integer "mode", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
