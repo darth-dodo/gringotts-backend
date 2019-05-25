@@ -37,8 +37,8 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   validates_uniqueness_of :name, scope: :user
   # by default numericality does not allow nils
   # https://guides.rubyonrails.org/active_record_validations.html#numericality
-  validates_numericality_of :current_value, greater_than_or_equal_to: 0
-  before_save :account_should_start_with_zero_value, on: :create
+  validates_numericality_of :current_value, greater_than_or_equal_to: 0, message: "cannot be negative!"
+  before_create :account_should_start_with_zero_value
 
   # model config
 

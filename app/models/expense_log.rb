@@ -37,9 +37,29 @@ class ExpenseLog < ApplicationRecord
   validates_presence_of :user
   validates_presence_of :category
   # validate :category_belongs_to_relevant_mode
+  validate :account_belongs_to_user
+  validate :category_belongs_to_user
+  validate :balance_available_for_transaction
   # scopes
 
   # callbacks
+
+  def account_belongs_to_user
+    unless self.account.user == self.user
+      self.errors.add(:base, "Account does not belong to the user!")
+    end
+  end
+
+  def category_belongs_to_user
+
+    # or something similar to this
+    # self.user.categories.include? self.category
+
+    unless self.category.user == self.user
+      self.errors.add(:base, "Category does not belong to the user!")
+    end
+  end
+
   # todo(Nagekar) this feels very hacky
   def category_belongs_to_relevant_mode
     category_mode = self.category.eligible_mode
@@ -54,8 +74,13 @@ class ExpenseLog < ApplicationRecord
     end
   end
 
-  # instance methods
+  def balance_available_for_transaction
+    if self.amount > self.account.current_value and self.debit?
+      self.errors.add(:base, "Insufficient balance for the log!")
+    end
+  end
 
+  # instance methods
 end
 
 # == Schema Information
