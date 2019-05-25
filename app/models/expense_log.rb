@@ -39,6 +39,7 @@ class ExpenseLog < ApplicationRecord
   # validate :category_belongs_to_relevant_mode
   validate :account_belongs_to_user
   validate :category_belongs_to_user
+  validate :balance_available_for_transaction
   # scopes
 
   # callbacks
@@ -70,6 +71,12 @@ class ExpenseLog < ApplicationRecord
 
     unless category_mode_mappings.include? current_mode
       self.errors.add(:base, "Category should be of #{category_mode.to_s.humanize} family across the mode #{current_mode.to_s.humanize}")
+    end
+  end
+
+  def balance_available_for_transaction
+    if self.amount > self.account.current_value and self.debit?
+      self.errors.add(:base, "Insufficient balance for the log!")
     end
   end
 

@@ -1,4 +1,4 @@
-module ExpenseLogs
+module ExpenseLogServices
   class CreateExpenseLog < ApplicationService
 
     def initialize(context)
@@ -11,11 +11,11 @@ module ExpenseLogs
                   user_id: u.id,
                   account_id: a.id,
                   category_id: c.id,
-                  amount: 10000,
+                  amount: 5500,
                   mode: 1,
                   note: "NA"
                 }
-      expense_log_service = ExpenseLogs::CreateExpenseLog.new(context)
+      expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
       expense_log_service.call
 =end
       super()
@@ -23,11 +23,11 @@ module ExpenseLogs
 
       # find_by returns nil if object is not present
       # find raise RecordNotFound
-      # todo(juneja) change this to find once we have a global error handler
-      @account = Account.find_by(id: @context.account_id)
-      @category = Category.find_by(id: @context.category_id)
+      # todo(juneja) add global error handle to handle 404
+      @account = Account.find(@context.account_id)
+      @category = Category.find(@context.category_id)
       # todo(juneja) implement current user from request store
-      @user = User.find_by(id: @context.user_id)
+      @user = User.find(@context.user_id)
 
       @amount = @context.amount
       @mode = @context.mode
@@ -42,25 +42,18 @@ module ExpenseLogs
       # https://api.rubyonrails.org/classes/ActiveRecord/Transactions/ClassMethods.html
       ActiveRecord::Base.transaction do
         create_expense_log
-        return unless valid?
+        rollback_database_transaction_if_invalid
 
         # account operations
-        update_user_account
-        unless valid?
-          rollback_database_transaction
-          return valid?
-        end
+        execute_update_account_service
+        rollback_database_transaction_if_invalid
 
         # internal transfer operations
-        if @is_internal_transfer
-          register_internal_transfer
-        end
-
+        # todo(juneja) internal account service
 
       end #transaction commit
 
-
-        valid?
+      valid?
 
     end
 
@@ -80,18 +73,17 @@ module ExpenseLogs
       @new_expense_log
     end
 
-    def update_user_account
-      puts "updating the user account"
+    def update_user_account_service_params
+      {
+          request_user:  @user.id,
+          expense_log_id: @new_expense_log.id
+      }
     end
 
-    def register_internal_transfer
-      puts "registering internal transfer"
-    end
-
-    def rollback_database_transaction
-      unless valid?
-        puts "rolling back since errors are present!"
-        raise ActiveRecord::Rollback
+    def execute_update_account_service
+      update_user_account_service = AccountServices::UpdateCurrentValueForAccount.new(update_user_account_service_params)
+      unless update_user_account_service.call
+        error update_user_account_service.errors
       end
     end
 

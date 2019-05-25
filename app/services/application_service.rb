@@ -24,4 +24,12 @@ class ApplicationService
     @errors.blank?
   end
 
+  def rollback_database_transaction_if_invalid
+    unless valid?
+      puts "rolling back since errors are present!"
+      raise ActiveRecord::Rollback
+    end
+  end
+
+
 end
