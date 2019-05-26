@@ -147,7 +147,7 @@ if Rails.env.development?
     create_seed_transfer_expense_log
   end
 
-  create_internal_transfer_expense_log
+  # create_internal_transfer_expense_log
 
 end
 

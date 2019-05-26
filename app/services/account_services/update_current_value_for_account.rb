@@ -22,6 +22,12 @@ module AccountServices
     end
 
     private
+    def account_should_belong_to_modifier
+      unless @account.user == @modified_by
+        error 'Modifier should be the account owner!'
+      end
+    end
+
     def update_account_value
       if @expense_log.credit?
         @account.current_value += @expense_log.amount
@@ -32,7 +38,6 @@ module AccountServices
       unless @account.save
         error @account.errors.full_messages
       end
-
     end
 
   end
