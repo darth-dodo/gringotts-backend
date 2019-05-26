@@ -7,6 +7,7 @@ module ExpenseLogServices
       u = User.first
       a = u.accounts.first
       c = u.categories.first
+
       context = {
                   user_id: u.id,
                   account_id: a.id,
@@ -17,8 +18,29 @@ module ExpenseLogServices
                 }
       expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
       expense_log_service.call
+
+      u = User.first
+      a = u.accounts.first
+      c = u.categories.first
+      da = u.accounts.for_slug('cash').first
+      internal_transfer_cat = u.categories.internal_transfer.try(:id)
+
+      context = {
+                  user_id: u.id,
+                  account_id: a.id,
+                  category_id: internal_transfer_cat,
+                  amount: 50,
+                  mode: 1,
+                  note: "NA",
+                  destination_account_id: da.id
+                }
+
+      expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
+      expense_log_service.call
+
 =end
       super()
+      binding.pry
       @context = Hashie::Mash.new(context)
 
       # find_by returns nil if object is not present
@@ -33,7 +55,9 @@ module ExpenseLogServices
       @mode = @context.mode
       @note = @context.note
 
-      @is_internal_transfer = @context.is_internal_transfer
+      @destination_account_id = @context.destination_account_id
+      @is_internal_transfer = @destination_account_id.present?
+
       @new_expense_log = ExpenseLog.new
     end
 
@@ -49,8 +73,11 @@ module ExpenseLogServices
         rollback_database_transaction_if_invalid
 
         # internal transfer operations
-        # todo(juneja) internal account service
-
+        if @is_internal_transfer
+          binding.pry
+          execute_internal_transfer_registration_service
+          rollback_database_transaction_if_invalid
+        end
       end #transaction commit
 
       valid?
@@ -84,6 +111,21 @@ module ExpenseLogServices
       update_user_account_service = AccountServices::UpdateCurrentValueForAccount.new(update_user_account_service_params)
       unless update_user_account_service.call
         error update_user_account_service.errors
+      end
+    end
+
+    def internal_transfer_log_service_params
+      {
+          expense_log_id: @new_expense_log.id,
+          destination_account_id: @destination_account_id
+      }
+    end
+
+    def execute_internal_transfer_registration_service
+      register_internal_transfer_service = InternalTransferLogServices::RegisterInternalTransfer.new(internal_transfer_log_service_params)
+
+      unless register_internal_transfer_service.call
+        error register_internal_transfer_service.errors
       end
     end
 
