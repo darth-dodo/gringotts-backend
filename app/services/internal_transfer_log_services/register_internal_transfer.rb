@@ -78,7 +78,12 @@ module InternalTransferLogServices
     end
 
     def create_internal_transfer_expense_log
-      @new_internal_transfer_log
+      @new_internal_transfer_log.source_account = @expense_log.account
+      @new_internal_transfer_log.destination_account = @destination_account
+      @new_internal_transfer_log.expense_log = @expense_log
+      unless @new_internal_transfer_log.save
+        error @new_internal_transfer_log.errors.full_messages
+      end
     end
 
   end

@@ -27,6 +27,13 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   has_many :expense_logs
   has_many :internal_transfer_logs
 
+  has_many :internal_transfer_logs_as_source_account, :class_name => 'InternalTransferLog', :foreign_key => 'source_account_id'
+
+  has_many :internal_transfer_logs_as_destination_account, :class_name => 'InternalTransferLog', :foreign_key => 'destination_account_id'
+
+
+
+
   # validations
   before_validation :validate_for_frozen_fields, on: :update
   before_validation :generate_slug, if: :name_changed?
@@ -55,7 +62,7 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   # instance methods
   # todo(juneja) create an inactivation concern
   def active?
-    self.inactivated_at.present?
+    self.inactivated_at.blank?
   end
 
 end

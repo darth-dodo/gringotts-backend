@@ -40,7 +40,6 @@ module ExpenseLogServices
 
 =end
       super()
-      binding.pry
       @context = Hashie::Mash.new(context)
 
       # find_by returns nil if object is not present
@@ -74,7 +73,6 @@ module ExpenseLogServices
 
         # internal transfer operations
         if @is_internal_transfer
-          binding.pry
           execute_internal_transfer_registration_service
           rollback_database_transaction_if_invalid
         end
