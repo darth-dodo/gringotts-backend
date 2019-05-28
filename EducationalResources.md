@@ -1,5 +1,6 @@
 # Models
 - https://stackoverflow.com/questions/9173412/rails-two-foreign-keys-on-one-model-both-refer-to-same-model
+- https://thoughtbot.com/blog/validation-database-constraint-or-both
 
 
 # Services
