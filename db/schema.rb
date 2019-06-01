@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_11_180747) do
+ActiveRecord::Schema.define(version: 2019_06_01_101804) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_11_180747) do
     t.integer "eligible_mode", null: false
     t.datetime "inactivated_at"
     t.bigint "user_id", null: false
+    t.integer "category_type"
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 

@@ -14,7 +14,7 @@ module ExpenseLogServices
                   category_id: c.id,
                   amount: 5500,
                   mode: 1,
-                  note: "NA"
+                  note: "Normal Expense Log"
                 }
       expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
       expense_log_service.call
@@ -22,16 +22,16 @@ module ExpenseLogServices
       u = User.first
       a = u.accounts.first
       c = u.categories.first
-      da = u.accounts.for_slug('cash').first
-      internal_transfer_cat = u.categories.internal_transfer.try(:id)
+      da = u.accounts.for_slug('cash-account').first
+      internal_transfer_cat = u.categories.internal_transfers.first
 
       context = {
                   user_id: u.id,
                   account_id: a.id,
-                  category_id: internal_transfer_cat,
+                  category_id: internal_transfer_cat.id,
                   amount: 50,
                   mode: 1,
-                  note: "NA",
+                  note: "Internal Transfer",
                   destination_account_id: da.id
                 }
 
@@ -42,9 +42,6 @@ module ExpenseLogServices
       super()
       @context = Hashie::Mash.new(context)
 
-      # find_by returns nil if object is not present
-      # find raise RecordNotFound
-      # todo(juneja) add global error handle to handle 404
       @account = Account.find(@context.account_id)
       @category = Category.find(@context.category_id)
       # todo(juneja) implement current user from request store

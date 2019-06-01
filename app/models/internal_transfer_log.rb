@@ -23,12 +23,20 @@ class InternalTransferLog < ApplicationRecord
   validates_presence_of :destination_account
   validates_presence_of :source_account
   validates_presence_of :expense_log
+  validate :expense_log_category_should_be_of_internal_tranfer_type
   validate :source_and_destination_accounts_should_belong_to_the_same_user, on: :create
   validate :source_and_destination_accounts_should_be_active, on: :create
 
   # scopes
 
   # callbacks
+
+  def expense_log_category_should_be_of_internal_tranfer_type
+    unless self.expense_log.internal_transfer?
+      errors.add(:base, "Category across the expense log should be of internal transfer type!")
+    end
+  end
+
   def source_and_destination_accounts_should_belong_to_the_same_user
     unless self.expense_log.user == self.destination_account.user &&  self.expense_log.user == self.source_account.user
       errors.add(:base, "Source and Destination accounts for internal transfer should belong to the the same user!")

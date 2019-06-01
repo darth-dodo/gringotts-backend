@@ -22,6 +22,10 @@ class Category < ApplicationRecord
       debitable: 1
   }
 
+  enum category_type: {
+      internal_transfer: 0
+  }
+
   # associations
   belongs_to :user
   has_many :expense_logs
@@ -38,15 +42,8 @@ class Category < ApplicationRecord
   # scopes
   scope :for_user, ->(user) { where(user_id: user.id) }
   scope :for_slug, ->(slug) { where(slug: slug) }
-
-  # todo(juneja) constantize this and include this as an after commit on user to create this default
-  # todo(juneja) category
-  # todo(juneja) this category is supposed to be immutable by user
-  scope :internal_transfer, ->() { where(slug: "internal-transfer").first }
-
-  # def get_internal_transfer
-  #   self.for_slug('internal-transfer').first
-  # end
+  scope :for_type, ->(category_type){ where(category_type: category_type) }
+  scope :internal_transfers, ->(){self.for_type("internal_transfer")}
 
   # instance methods
   # callbacks
