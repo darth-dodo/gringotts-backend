@@ -37,7 +37,6 @@ module InternalTransferLogServices
     protected
     def validate
       expense_log_has_existing_internal_transfer_attached?
-      validate_source_and_destination_user
     end
 
     private
@@ -47,23 +46,11 @@ module InternalTransferLogServices
       end
     end
 
-    def validate_source_and_destination_user
-      unless @destination_account.user == @expense_log.account.user
-        error 'Destination account does not belong to the user!'
-      end
-    end
-
-    def set_internal_transfer_category_id
-      user_internal_transfer_category = @expense_log.user.categories.internal_transfer
-      user_internal_transfer_category.try(:id)
-    end
-
     def create_expense_log_params
       expense_log_params = Hash.new
-      expense_log_params[:user_id] = @destination_account.user_id
+      expense_log_params[:user_id] = @expense_log.user_id
       expense_log_params[:account_id] = @destination_account.id
-      # todo(juneja): discuss this with nagekar
-      expense_log_params[:category_id] = set_internal_transfer_category_id
+      expense_log_params[:category_id] = @expense_log.category_id
       expense_log_params[:amount] = @expense_log.amount
       expense_log_params[:mode] = :credit
 

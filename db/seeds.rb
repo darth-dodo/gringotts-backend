@@ -68,10 +68,11 @@ def create_debitable_categories
                            eligible_mode: :debitable
                        },
                        {
-                           name: 'Internal Transfer',
+                           name: 'Cash Transfer',
                            user: admin_user,
-                           eligible_mode: :debitable
-                       },
+                           eligible_mode: :debitable,
+                           category_type: 'internal_transfer'
+                       }
 
                    ])
 
@@ -95,7 +96,7 @@ def create_dummy_accounts
                       {
                           user: admin_user,
                           current_value: 100,
-                          name: "Cash"
+                          name: "Cash Account"
                       }
 
                   ])
@@ -125,7 +126,7 @@ def create_internal_transfer_expense_log
   eager_loaded_user = User.includes(:categories, :accounts).first
   eager_loaded_user_categories = eager_loaded_user.categories
   eager_loaded_user_accounts = eager_loaded_user.accounts
-  internal_transfer_category = eager_loaded_user_categories.internal_transfer
+  internal_transfer_category = eager_loaded_user_categories.internal_transfers.first
   salary_account = eager_loaded_user_accounts.for_slug('salary').first
 
   new_expense_log = ExpenseLog.new
