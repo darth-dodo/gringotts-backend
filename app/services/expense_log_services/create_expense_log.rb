@@ -1,6 +1,6 @@
 module ExpenseLogServices
   class CreateExpenseLog < ApplicationService
-
+    attr_reader :new_expense_log
     def initialize(context)
 =begin
 
@@ -28,7 +28,7 @@ module ExpenseLogServices
       context = {
                   user_id: u.id,
                   account_id: a.id,
-                  category_id: internal_transfer_cat.id,
+                  category_id: c.id,
                   amount: 50,
                   mode: 1,
                   note: "Internal Transfer",

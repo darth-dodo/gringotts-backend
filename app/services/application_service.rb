@@ -10,6 +10,15 @@ class ApplicationService
     new(*args, &block).call
   end
 
+  def call!
+    self.call
+
+    if @errors.present?
+      raise ExceptionHandler::GringottsValidationError.new error_messages
+    end
+
+  end
+
   private
 
   def error(error_message)
@@ -18,6 +27,10 @@ class ApplicationService
     elsif error_message.is_a? String
       @errors << error_message
     end
+  end
+
+  def error_messages
+    @errors.join ', '
   end
 
   def valid?

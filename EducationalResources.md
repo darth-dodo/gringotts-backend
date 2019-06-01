@@ -3,6 +3,12 @@
 - https://thoughtbot.com/blog/validation-database-constraint-or-both
 - https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
 
+# Controllers
+- https://allenan.com/rails-4-strong-params/
+- https://www.railstutorial.org/book/updating_and_deleting_users
+- https://medium.com/@tbrisker/strong-parameters-in-rails-down-the-rabbit-hole-2426d331625
+- https://blog.trackets.com/2013/08/17/strong-parameters-by-example.html
+
 # Services
 - https://www.engineyard.com/blog/keeping-your-rails-controllers-dry-with-services
 - https://github.com/Selleo/pattern

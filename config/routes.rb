@@ -9,5 +9,6 @@ Rails.application.routes.draw do
 
   resources :accounts
   resources :categories
+  resources :expense_logs
 
 end
