@@ -29,14 +29,13 @@ class ExpenseLogsController < ApiController
 
   def expense_log_creation_params
     params.permit(
-    :user_id,
     :account_id,
     :category_id,
     :amount,
     :mode,
     :note,
     :destination_account_id
-    )
+    ).merge( {user_id: current_user.id })
   end
 
   def expense_log_update_params
