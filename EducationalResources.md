@@ -1,6 +1,7 @@
 # Models
 - https://stackoverflow.com/questions/9173412/rails-two-foreign-keys-on-one-model-both-refer-to-same-model
 - https://thoughtbot.com/blog/validation-database-constraint-or-both
+- https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
 
 # Services
 - https://www.engineyard.com/blog/keeping-your-rails-controllers-dry-with-services

@@ -26,6 +26,7 @@ class ExpenseLog < ApplicationRecord
   belongs_to :account
   belongs_to :category
 
+  # https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
   delegate :internal_transfer?, to: :category
 
   # todo(juneja) confirm this has one relationship
