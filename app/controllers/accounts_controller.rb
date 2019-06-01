@@ -14,9 +14,8 @@ class AccountsController < ApiController
   def account_creation_params
     params.permit(
     :name,
-    :note,
-    :user_id
-    )
+    :note
+    ).merge({ user: current_user })
   end
 
 end

@@ -138,6 +138,10 @@ def create_internal_transfer_expense_log
   new_expense_log.save!
 end
 
+def print_jwt_token
+  puts User.first.jwt_token
+end
+
 if Rails.env.development?
 
   ActiveRecord::Base.transaction do
@@ -149,6 +153,9 @@ if Rails.env.development?
   end
 
   # create_internal_transfer_expense_log
+  #
+
+  print_jwt_token
 
 end
 

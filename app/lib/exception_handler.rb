@@ -14,9 +14,9 @@ module ExceptionHandler  extend ActiveSupport::Concern
 
   private
 
-  def record_not_found
-    binding.pry
-    json_response( { message: Message.not_found }, :not_found)
+  def record_not_found(e)
+    humanized_model_name = e.model.humanize
+    json_response( { message: Message.not_found(humanized_model_name) }, :not_found)
   end
 
   def four_twenty_two(e)

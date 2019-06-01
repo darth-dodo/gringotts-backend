@@ -72,7 +72,7 @@ end
 # Table name: accounts
 #
 #  id             :bigint           not null, primary key
-#  current_value  :float            not null
+#  current_value  :float            default(0.0), not null
 #  inactivated_at :datetime
 #  name           :string           not null, indexed => [user_id]
 #  note           :text

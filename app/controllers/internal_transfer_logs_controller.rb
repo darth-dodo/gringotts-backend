@@ -1,0 +1,2 @@
+class InternalTransferLogsController < ApplicationController
+end

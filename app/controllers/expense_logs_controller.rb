@@ -1,0 +1,2 @@
+class ExpenseLogsController < ApplicationController
+end
