@@ -25,6 +25,9 @@ class User < ApplicationRecord
   # scopes
 
   # instance methods
+  def jwt_token
+    JsonWebToken.encode(user_id: self.id)
+  end
 
   # callbacks
 
