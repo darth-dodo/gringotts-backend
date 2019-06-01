@@ -20,4 +20,4 @@ dropdb gringotts_dev && createdb gringotts_dev && rake db:migrate && rake db:see
 - Rake db migrate: `heroku run rake db:migrate --app=gringotts-backend`
 - Rake db seed: `heroku run rake db:seed --app=gringotts-backend`
 - Rails Console: `heroku run rails c --app=gringotts-backend`
-- Application Log stream: `heroku logs --app=gringotts-backend`
+- Application Log stream: `heroku logs -t --app=gringotts-backend`
