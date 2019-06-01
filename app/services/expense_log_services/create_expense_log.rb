@@ -28,7 +28,7 @@ module ExpenseLogServices
       context = {
                   user_id: u.id,
                   account_id: a.id,
-                  category_id: c.id,
+                  category_id: internal_transfer_cat.id,
                   amount: 50,
                   mode: 1,
                   note: "Internal Transfer",
@@ -36,7 +36,7 @@ module ExpenseLogServices
                 }
 
       expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
-      expense_log_service.call
+      expense_log_service.call!
 
 =end
       super()

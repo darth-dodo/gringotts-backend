@@ -2,6 +2,7 @@
 - https://stackoverflow.com/questions/9173412/rails-two-foreign-keys-on-one-model-both-refer-to-same-model
 - https://thoughtbot.com/blog/validation-database-constraint-or-both
 - https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
+- https://medium.com/rubyinside/active-records-queries-tricks-2546181a98dd
 
 # Controllers
 - https://allenan.com/rails-4-strong-params/
@@ -21,6 +22,7 @@
 
 # Application wide
 - https://www.nopio.com/blog/how-to-organize-large-rails-applications/
+- https://driggl.com/blog/a/handling-exceptions-in-rails-applications
 
 # JWT/Auth related
 - *https://scotch.io/tutorials/build-a-restful-json-api-with-rails-5-part-two*

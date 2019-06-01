@@ -20,10 +20,10 @@ module ExceptionHandler  extend ActiveSupport::Concern
   end
 
   included do
-    rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
-    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ExceptionHandler::AuthenticationError, with: :unauthorized_request
     rescue_from ExceptionHandler::GringottsValidationError, with: :four_zero_zero
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
     rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
     rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two
   end
@@ -31,8 +31,7 @@ module ExceptionHandler  extend ActiveSupport::Concern
   private
 
   def record_not_found(e)
-    humanized_model_name = e.model.humanize
-    json_response( { message: Message.not_found(humanized_model_name) }, :not_found)
+    json_response( { message: Message.not_found }, :not_found)
   end
 
   def four_twenty_two(e)

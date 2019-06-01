@@ -10,5 +10,6 @@ Rails.application.routes.draw do
   resources :accounts
   resources :categories
   resources :expense_logs
+  resources :internal_transfer_logs, path: 'internal-transfer-logs'
 
 end
