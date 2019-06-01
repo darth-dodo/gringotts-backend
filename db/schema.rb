@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_01_101804) do
+ActiveRecord::Schema.define(version: 2019_06_01_114555) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_101804) do
     t.string "name", null: false
     t.string "slug", null: false
     t.text "note"
-    t.float "current_value", null: false
+    t.float "current_value", default: 0.0, null: false
     t.datetime "inactivated_at"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_06_01_101804) do
     t.datetime "inactivated_at"
     t.bigint "user_id", null: false
     t.integer "category_type"
+    t.index ["user_id", "name"], name: "index_categories_on_user_id_and_name", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"
   end
 

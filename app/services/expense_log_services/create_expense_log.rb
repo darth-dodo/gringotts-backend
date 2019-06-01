@@ -1,6 +1,6 @@
 module ExpenseLogServices
   class CreateExpenseLog < ApplicationService
-
+    attr_reader :new_expense_log
     def initialize(context)
 =begin
 
@@ -36,7 +36,7 @@ module ExpenseLogServices
                 }
 
       expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
-      expense_log_service.call
+      expense_log_service.call!
 
 =end
       super()

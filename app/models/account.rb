@@ -14,10 +14,6 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
     IMMUTABLE_FIELDS = [:user_id].freeze
   end
 
-  # # model config
-  # # Todo(juneja) learn the edge cases of delegate
-  # delegate :name, to: :user
-
   # concern config
   source_for_slug :name
   freeze_fields Account::Constants::IMMUTABLE_FIELDS
@@ -72,7 +68,7 @@ end
 # Table name: accounts
 #
 #  id             :bigint           not null, primary key
-#  current_value  :float            not null
+#  current_value  :float            default(0.0), not null
 #  inactivated_at :datetime
 #  name           :string           not null, indexed => [user_id]
 #  note           :text

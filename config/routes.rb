@@ -8,5 +8,8 @@ Rails.application.routes.draw do
   post 'signup', to: 'users#create'
 
   resources :accounts
+  resources :categories
+  resources :expense_logs
+  resources :internal_transfer_logs, path: 'internal-transfer-logs'
 
 end

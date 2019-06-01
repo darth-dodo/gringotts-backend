@@ -5,7 +5,9 @@ class Category < ApplicationRecord
   include Frozen
 
   module Constants
-    IMMUTABLE_FIELDS = [:eligible_mode].freeze
+    IMMUTABLE_FIELDS = [:eligible_mode,
+    :category_type
+    ].freeze
     # category_mode: log_mode
     MODE_MAPPINGS = {
         creditable: [:credit],
@@ -39,6 +41,8 @@ class Category < ApplicationRecord
   validates_presence_of :slug
   validates_presence_of :eligible_mode
 
+  validates_uniqueness_of :name, scope: :user_id
+
   # scopes
   scope :for_user, ->(user) { where(user_id: user.id) }
   scope :for_slug, ->(slug) { where(slug: slug) }
@@ -55,15 +59,17 @@ end
 # Table name: categories
 #
 #  id             :bigint           not null, primary key
+#  category_type  :integer
 #  eligible_mode  :integer          not null
 #  inactivated_at :datetime
-#  name           :string           not null
+#  name           :string           not null, indexed => [user_id]
 #  slug           :string           not null
-#  user_id        :bigint           not null, indexed
+#  user_id        :bigint           not null, indexed, indexed => [name]
 #
 # Indexes
 #
-#  index_categories_on_user_id  (user_id)
+#  index_categories_on_user_id           (user_id)
+#  index_categories_on_user_id_and_name  (user_id,name) UNIQUE
 #
 # Foreign Keys
 #

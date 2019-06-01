@@ -28,6 +28,9 @@ class InternalTransferLog < ApplicationRecord
   validate :source_and_destination_accounts_should_be_active, on: :create
 
   # scopes
+  # https://medium.com/rubyinside/active-records-queries-tricks-2546181a98dd
+  scope :for_user, ->(user) { joins(:source_account).merge(Account.for_user(user)) }
+
 
   # callbacks
 
