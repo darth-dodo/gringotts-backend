@@ -1,7 +1,6 @@
 class UsersController < ApiController
   skip_before_action :authorize_request, only: :create
 
-
   def create
 =begin
     url: https://gringotts-backend.herokuapp.com/signup
@@ -12,9 +11,18 @@ class UsersController < ApiController
     }
 =end
     user = User.create!(user_params)
-    auth_token = AuthServices::AuthenticateUser.new(user.email, user.password).call
-    response = { message: Message.user_created, auth_token: auth_token }
-    json_response(response, :created)
+    render_json serializer, user
+  end
+
+  def index
+    # json_response UserSerializer.new(current_user).as_hash[:data]
+    render_json serializer, current_user
+  end
+
+  private
+
+  def serializer
+    UserSerializer
   end
 
   def user_params

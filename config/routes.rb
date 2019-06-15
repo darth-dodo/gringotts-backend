@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   post 'auth/login', to: 'base#authenticate'
   post 'signup', to: 'users#create'
 
+  resources :users, only: [:index]
   resources :accounts
   resources :categories
-  resources :expense_logs
+  resources :expense_logs, path: 'expense-logs'
   resources :internal_transfer_logs, path: 'internal-transfer-logs'
 
 end

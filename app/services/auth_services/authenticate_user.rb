@@ -8,7 +8,7 @@ module AuthServices
     end
 
     def call
-      JsonWebToken.encode(user_id: user.id) if user
+      user.jwt_token
     end
 
     private
