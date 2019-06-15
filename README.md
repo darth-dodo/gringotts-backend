@@ -99,7 +99,7 @@
 ```
 
 ### Expense Log
-- URL: POST /expense_logs/
+- URL: POST /expense-logs/
 
 ```json
 {

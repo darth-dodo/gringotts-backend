@@ -54,6 +54,8 @@ class Category < ApplicationRecord
 
 end
 
+# TODO add timestamps to this table
+
 # == Schema Information
 #
 # Table name: categories

@@ -43,7 +43,9 @@ class ExpenseLog < ApplicationRecord
   validate :account_belongs_to_user
   validate :category_belongs_to_user
   validate :balance_available_for_transaction
+
   # scopes
+  scope :for_user, ->(user) { where(user_id: user.id) }
 
   # callbacks
 
