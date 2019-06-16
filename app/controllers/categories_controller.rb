@@ -2,6 +2,15 @@ class CategoriesController < ApiController
 
   before_action :set_category_from_param!, only: [:show, :update]
 
+  respond_to :json
+
+  swagger_controller :categories, 'Categories'
+
+  swagger_api :index do
+    summary 'Returns all categories'
+    notes 'Notes...'
+  end  
+
   def index
     categories = Category.for_user(current_user)
     json_response categories
