@@ -169,7 +169,7 @@ No payload
 - [x] APIfying
 - [ ] Polymorphic demo:
     - [x] Likeable (custom)
-    - [ ] Taggable (gem)
+    - [x] Taggable (gem)
 - [ ] OAuth
 - [x] PaperTrail
 - [ ] Fast Json API
