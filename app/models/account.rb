@@ -10,6 +10,7 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   # imports
   include Slugable
   include Frozen
+  include FavoritableConcern
 
   module Constants
     IMMUTABLE_FIELDS = [:user_id].freeze
@@ -18,6 +19,7 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   # concern config
   source_for_slug :name
   freeze_fields Account::Constants::IMMUTABLE_FIELDS
+  source_for_favoritable_user_association :user
 
   # associations
   belongs_to :user
@@ -27,6 +29,9 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
   has_many :internal_transfer_logs_as_source_account, :class_name => 'InternalTransferLog', :foreign_key => 'source_account_id'
 
   has_many :internal_transfer_logs_as_destination_account, :class_name => 'InternalTransferLog', :foreign_key => 'destination_account_id'
+
+  has_many :favorites, as: :favoritable
+
 
 
 

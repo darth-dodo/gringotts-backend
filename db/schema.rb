@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_13_053151) do
+ActiveRecord::Schema.define(version: 2019_07_13_102019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,15 @@ ActiveRecord::Schema.define(version: 2019_07_13_053151) do
     t.index ["account_id"], name: "index_expense_logs_on_account_id"
     t.index ["category_id"], name: "index_expense_logs_on_category_id"
     t.index ["user_id"], name: "index_expense_logs_on_user_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "favoritable_type"
+    t.bigint "favoritable_id"
+    t.bigint "user_id"
+    t.index ["favoritable_id", "favoritable_type"], name: "index_favorites_on_favoritable_id_and_favoritable_type", unique: true
+    t.index ["favoritable_type", "favoritable_id"], name: "index_favorites_on_favoritable_type_and_favoritable_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "internal_transfer_logs", force: :cascade do |t|

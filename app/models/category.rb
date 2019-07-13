@@ -4,6 +4,7 @@ class Category < ApplicationRecord
   # imports
   include Slugable
   include Frozen
+  include FavoritableConcern
 
   module Constants
     IMMUTABLE_FIELDS = [:eligible_mode,
@@ -19,6 +20,7 @@ class Category < ApplicationRecord
   # concern config
   source_for_slug :name
   freeze_fields Category::Constants::IMMUTABLE_FIELDS
+  source_for_favoritable_user_association :user
 
   enum eligible_mode: {
       creditable: 0,
@@ -32,6 +34,9 @@ class Category < ApplicationRecord
   # associations
   belongs_to :user
   has_many :expense_logs
+  has_many :favorites, as: :favoritable
+
+
 
   # validations
   before_validation :validate_for_frozen_fields, on: :update

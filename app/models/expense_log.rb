@@ -3,6 +3,7 @@ class ExpenseLog < ApplicationRecord
 
   # imports
   include Frozen
+  include FavoritableConcern
 
   # constants
   module Constants
@@ -27,6 +28,7 @@ class ExpenseLog < ApplicationRecord
   belongs_to :user
   belongs_to :account
   belongs_to :category
+  has_many :favorites, as: :favoritable
 
   # https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
   delegate :internal_transfer?, to: :category
@@ -45,7 +47,9 @@ class ExpenseLog < ApplicationRecord
   validate :account_belongs_to_user
   validate :category_belongs_to_user
   validate :balance_available_for_transaction
+
   # scopes
+  scope :for_user, ->(user) { where(user_id: user.id) }
 
   # callbacks
 

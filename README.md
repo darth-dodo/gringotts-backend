@@ -62,6 +62,11 @@
 }
 ```
 
+- URL: POST /accounts/1/toggle-favorite
+```
+No payload
+```
+
 
 ### Category
 - URL: GET /categories/
@@ -98,6 +103,12 @@
 }
 ```
 
+- URL: POST /categories/1/toggle-favorite
+```
+No payload
+```
+
+
 ### Expense Log
 - URL: POST /expense_logs/
 
@@ -122,6 +133,11 @@
   "note":"Wallet refill from new salary"
 }
 ```
+- URL: POST /expense_logs/1/toggle-favorite
+```
+No payload
+```
+
 
 ### Internal Transfer Log
 - URL: GET /internal-transfer-logs/
@@ -139,4 +155,14 @@
     - [ ] Scheduler
     - [ ] Airbrake
 - [ ] YAML based config
-- [ ] APIfying    
+- [x] APIfying
+- [ ] Polymorphic demo:
+    - [x] Likeable (custom)
+    - [ ] Taggable (gem)
+- [ ] OAuth
+- [x] PaperTrail
+- [ ] Fast Json API
+- [ ] Query Optimization
+- [ ] Refactor part 1
+- [ ] CSV downloads
+- [ ] Filters (based on FE)

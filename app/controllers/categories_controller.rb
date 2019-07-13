@@ -1,10 +1,13 @@
 class CategoriesController < ApiController
 
-  before_action :set_category_from_param!, only: [:show, :update]
+  before_action :set_category_from_param!, only: [:show, :update, :toggle_favorite]
+  include FavoriteHelper
 
   def index
     categories = Category.for_user(current_user)
-    json_response categories
+    # json_response categories
+    # todo(juneja) figure this abstraction out or replace with fast json api
+    render json: categories, methods: [:marked_as_favorite], status: :ok
   end
 
   def show
@@ -20,6 +23,12 @@ class CategoriesController < ApiController
     @category.update!(category_update_params)
     json_response @category, :ok
   end
+
+  def toggle_favorite
+    updated_category = toggle_entity_as_favoritable! @category
+    render json: updated_category, methods: [:marked_as_favorite], status: :ok
+  end
+
 
   private
   def category_creation_params

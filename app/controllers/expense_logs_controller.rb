@@ -1,10 +1,13 @@
 class ExpenseLogsController < ApiController
-  before_action :set_expense_log_from_param!, only: [:show, :update]
+  before_action :set_expense_log_from_param!, only: [:show, :update, :toggle_favorite]
+  include FavoriteHelper
 
   def index
     # expense_logs = ExpenseLog.for_user(current_user) or ->
     expense_logs = current_user.expense_logs
-    json_response expense_logs
+    # json_response expense_logs
+    # todo(juneja) abstract render as json out OR move to fast_jsonapi
+    render json: expense_logs, methods: [:marked_as_favorite], status: :ok
   end
 
   def show
@@ -21,6 +24,12 @@ class ExpenseLogsController < ApiController
     @expense_log.update!(expense_log_update_params)
     json_response @expense_log
   end
+
+  def toggle_favorite
+    updated_expense_log = toggle_entity_as_favoritable! @expense_log
+    render json: updated_expense_log, methods: [:marked_as_favorite], status: :ok
+  end
+
 
   private
   def set_expense_log_from_param!
