@@ -16,10 +16,17 @@ class User < ApplicationRecord
   # concern config
   freeze_fields User::Constants::IMMUTABLE_FIELDS
 
-# associations
+  # associations
   has_many :categories
   has_many :accounts
   has_many :expense_logs
+
+  # favorites and through relations
+  has_many :favorites, inverse_of: :user
+  has_many :favorite_categories, through: :favorites, source: :favoritable, source_type: "Category"
+  has_many :favorite_accounts, through: :favorites, source: :favoritable, source_type: "Account"
+  has_many :favorite_expense_logs, through: :favorites, source: :favoritable, source_type: "ExpenseLog"
+
 
   # validations
   before_validation :validate_for_frozen_fields, on: :update

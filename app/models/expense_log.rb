@@ -3,6 +3,7 @@ class ExpenseLog < ApplicationRecord
 
   # imports
   include Frozen
+  include FavoritableConcern
 
   # constants
   module Constants
@@ -27,6 +28,7 @@ class ExpenseLog < ApplicationRecord
   belongs_to :user
   belongs_to :account
   belongs_to :category
+  has_many :favorites, as: :favoritable
 
   # https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-delegate/
   delegate :internal_transfer?, to: :category
