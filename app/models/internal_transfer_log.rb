@@ -1,5 +1,6 @@
 class InternalTransferLog < ApplicationRecord
-  # imports
+  has_paper_trail
+
   include Frozen
 
   # constants

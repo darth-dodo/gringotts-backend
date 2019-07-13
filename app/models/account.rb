@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
-  # todo(juneja) add in papertrail
+  has_paper_trail
+
   attr_accessor :skip_frozen_fields_validation
 =begin
 discuss with Nagekar the concept of passbook and wallet and wallet abstraction
