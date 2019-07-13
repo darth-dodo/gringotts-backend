@@ -35,6 +35,9 @@ gem 'paper_trail', git: 'https://github.com/airblade/paper_trail.git', branch: '
 # https://github.com/paper-trail-gem/paper_trail/tree/10-stable#1b-installation
 gem 'paper_trail-association_tracking' # require this for running active admin
 
+gem 'acts-as-taggable-on', '~> 6.0'
+
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

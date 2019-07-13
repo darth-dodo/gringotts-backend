@@ -14,7 +14,8 @@ module ExpenseLogServices
                   category_id: c.id,
                   amount: 5500,
                   mode: 1,
-                  note: "Normal Expense Log"
+                  note: "Normal Expense Log",
+                  tag_list: ["tag1", "tag2"]
                 }
       expense_log_service = ExpenseLogServices::CreateExpenseLog.new(context)
       expense_log_service.call
@@ -50,6 +51,7 @@ module ExpenseLogServices
       @amount = @context.amount
       @mode = @context.mode
       @note = @context.note
+      @tag_list = @context.tag_list
 
       @destination_account_id = @context.destination_account_id
       @is_internal_transfer = @destination_account_id.present?
@@ -88,6 +90,7 @@ module ExpenseLogServices
       @new_expense_log.amount = @amount
       @new_expense_log.mode = @mode
       @new_expense_log.note = @note
+      @new_expense_log.tag_list = @tag_list
 
       unless @new_expense_log.save
         error @new_expense_log.errors.full_messages
