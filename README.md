@@ -114,11 +114,12 @@ No payload
 
 ```json
 {
-  "account_id":4,
-  "category_id":3,
-  "amount":5000,
+  "account_id":1,
+  "category_id":1,
+  "amount":50000,
   "mode": "credit",
-  "note":"Salary Credit"
+  "note":"Salary Credit",
+  "tag_list": ["paisa", "paishe"]
 }
 ```
 
@@ -130,9 +131,19 @@ No payload
   "category_id":2,
   "amount":500,
   "mode": "debit",
-  "note":"Wallet refill from new salary"
+  "note":"Wallet refill from new salary",
+  "tag_list": ["oops"]
 }
 ```
+
+- URL: PUT /expense_logs/1/
+```json
+{
+  "tag_list": ["chai, samosa"],
+  "note": "Money for snacks!"
+}
+```
+
 - URL: POST /expense_logs/1/toggle-favorite
 ```
 No payload

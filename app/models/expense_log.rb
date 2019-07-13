@@ -23,6 +23,7 @@ class ExpenseLog < ApplicationRecord
 
   # concern config
   freeze_fields ExpenseLog::Constants::IMMUTABLE_FIELDS
+  acts_as_taggable
 
   # associations
   belongs_to :user
