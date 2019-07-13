@@ -24,8 +24,8 @@ module ExceptionHandler  extend ActiveSupport::Concern
     rescue_from ExceptionHandler::GringottsValidationError, with: :four_zero_zero
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
-    rescue_from ExceptionHandler::MissingToken, with: :four_twenty_two
-    rescue_from ExceptionHandler::InvalidToken, with: :four_twenty_two
+    rescue_from ExceptionHandler::MissingToken, with: :unauthorized_request
+    rescue_from ExceptionHandler::InvalidToken, with: :unauthorized_request
   end
 
   private

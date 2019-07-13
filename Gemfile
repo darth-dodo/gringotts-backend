@@ -29,6 +29,13 @@ gem 'jwt'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'paper_trail', git: 'https://github.com/airblade/paper_trail.git', branch: '10-stable'
+
+# https://github.com/paper-trail-gem/paper_trail/tree/10-stable#4b-associations
+# https://github.com/paper-trail-gem/paper_trail/tree/10-stable#1b-installation
+gem 'paper_trail-association_tracking' # require this for running active admin
+
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

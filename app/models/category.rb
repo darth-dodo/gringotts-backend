@@ -1,4 +1,5 @@
 class Category < ApplicationRecord
+  has_paper_trail
 
   # imports
   include Slugable

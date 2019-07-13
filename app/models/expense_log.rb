@@ -1,4 +1,6 @@
 class ExpenseLog < ApplicationRecord
+  has_paper_trail
+
   # imports
   include Frozen
 
