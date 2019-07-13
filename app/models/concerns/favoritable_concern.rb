@@ -1,5 +1,6 @@
 module FavoritableConcern extend ActiveSupport::Concern
   included do
+    attr_accessor :marked_as_favorite
 
     class_attribute :user_association
 
@@ -25,7 +26,11 @@ module FavoritableConcern extend ActiveSupport::Concern
 
     def get_favorite!
       # todo(juneja) currently the user relation is hardcoded for the where clause and likewise, figure out a workaround
-      Favorite.joins(:user).where(favoritable: self)
+      Favorite.joins(:user).where(favoritable: self).first
+    end
+
+    def marked_as_favorite
+      marked_as_favorite?
     end
 
   end

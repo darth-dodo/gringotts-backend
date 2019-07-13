@@ -1,49 +1,33 @@
 class AccountsController < ApiController
-  before_action :set_account_from_param!, only: [:show, :update]
+  before_action :set_account_from_param!, only: [:show, :update, :toggle_favorite]
+
+  include FavoriteHelper
 
   def index
-=begin
-    url: https://gringotts-backend.herokuapp.com/accounts/
-    payload:
-    {
-      "email": "test@test12.com",
-      "password": "apples2"
-    }
-=end
     accounts = Account.for_user(current_user)
-    json_response accounts
+
+    # todo(juneja) figure this abstraction out or replace with fast json api
+    render json: accounts, methods: [:marked_as_favorite], status: :ok
+
   end
 
   def create
-=begin
-    POST url: https://gringotts-backend.herokuapp.com/accounts/
-    payload:
-    {
-      "name": "Salary"
-    }
-=end
     account = Account.create!(account_creation_params)
     json_response account, :created
   end
 
   def show
-=begin
-    GET url: https://gringotts-backend.herokuapp.com/accounts/1/
-=end
     json_response @account
   end
 
   def update
-=begin
-    url: https://gringotts-backend.herokuapp.com/signup
-    payload:
-    {
-      "email": "test@test12.com",
-      "password": "apples2"
-    }
-=end
     @account.update!(account_update_params)
     json_response @account, :ok
+  end
+
+  def toggle_favorite
+    updated_account = toggle_entity_as_favoritable! @account
+    render json: updated_account, methods: [:marked_as_favorite], status: :ok
   end
 
   private
