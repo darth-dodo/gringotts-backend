@@ -30,5 +30,12 @@
 - https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
 - https://thinkster.io/tutorials/rails-json-api/setting-up-users-and-authentication-for-our-api
 
+# Polymorphic Associations
+- https://guides.rubyonrails.org/association_basics.html#polymorphic-associations
+- https://thoughtbot.com/blog/whats-the-deal-with-rails-polymorphic-associations
+- https://launchschool.com/blog/understanding-polymorphic-associations-in-rails
+- https://medium.com/@adamlangsner/4-ways-to-model-polymorphic-relationships-in-rails-5-4c98101ed900
+- https://snippets.aktagon.com/snippets/588-how-to-implement-favorites-in-rails-with-polymorphic-associations
+
 # Gems
 - http://www.carlosramireziii.com/how-to-add-active-admin-to-a-rails-5-api-application.html
