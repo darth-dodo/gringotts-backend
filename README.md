@@ -1,6 +1,4 @@
-# Gringotts
-
-<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/VPnTqJLUwCv60" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/rip-city-VPnTqJLUwCv60">via GIPHY</a></p>
+# ![Gringotts](https://giphy.com/gifs/rip-city-VPnTqJLUwCv60)
 
 ## Index
 - [Summary](#summary)
@@ -27,7 +25,7 @@ This repository stores the code for the Backend for the project. The Frontend co
 
 In case of any questions or queries please reach out to @abhn or @darth-dodo.
 
-Cheers!
+![Cheers!](https://giphy.com/gifs/movie-party-harry-potter-OU1marLMNNtnO)
 
 
 ## Setup
@@ -88,6 +86,3 @@ Cheers!
 - [ ] Refactor part 1
 - [ ] CSV downloads
 - [ ] Filters (based on FE)
-
-
-<div style="width:100%;height:0;padding-bottom:58%;position:relative;"><iframe src="https://giphy.com/embed/OU1marLMNNtnO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/movie-party-harry-potter-OU1marLMNNtnO">via GIPHY</a></p>
