@@ -29,7 +29,7 @@ Future scope includes using some light weight ML modeling such as [K Means](http
 
 In case of any questions, queries or suggestions please reach out to @abhn or @darth-dodo.
 
-Cheers! 
+Cheers!
 
 ![everyday-i-am-dumblin](https://media.giphy.com/media/OU1marLMNNtnO/giphy.gif)
 
@@ -59,7 +59,8 @@ Cheers!
 - Use the above creds listed above to play around.
 
 ## API Documentation
-- [The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)
+- ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
+- [API Docs using Postman](https://documenter.getpostman.com/view/8196826/SVSNJnWy?version=latest)
 
 ## Education Resources
 - While working on anything, we tend to come across educational resources which help us in getting better and understanding a problem as well as it's solution on a deeper level
@@ -78,7 +79,7 @@ Cheers!
 - [x] Polymorphic demo:
   - [x] [Likeable (custom)](https://github.com/darth-dodo/gringotts-backend/pull/14)
   - [x] [Taggable (gem)](https://github.com/darth-dodo/gringotts-backend/pull/15)
-- [ ] Swagger/Slate integration
+- [x] Swagger/Slate/Postman integration
 - [ ] Code Refactor
 - [ ] Scheduling using Sidekiq
 - [ ] Airbrake
