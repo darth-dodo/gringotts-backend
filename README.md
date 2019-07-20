@@ -1,4 +1,4 @@
-# ![Gringotts](https://giphy.com/gifs/rip-city-VPnTqJLUwCv60)
+# ![Gringotts](https://media.giphy.com/media/rip-city-VPnTqJLUwCv60.gif)
 
 ## Index
 - [Summary](#summary)
@@ -25,7 +25,7 @@ This repository stores the code for the Backend for the project. The Frontend co
 
 In case of any questions or queries please reach out to @abhn or @darth-dodo.
 
-![Cheers!](https://giphy.com/gifs/movie-party-harry-potter-OU1marLMNNtnO)
+![Cheers!](https://media.giphy.com/media/movie-party-harry-potter-OU1marLMNNtnO.gif)
 
 
 ## Setup
