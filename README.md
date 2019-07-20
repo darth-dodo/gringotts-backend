@@ -79,7 +79,7 @@ Cheers!
 - [x] Polymorphic demo:
   - [x] [Likeable (custom)](https://github.com/darth-dodo/gringotts-backend/pull/14)
   - [x] [Taggable (gem)](https://github.com/darth-dodo/gringotts-backend/pull/15)
-- [ ] Swagger/Slate integration
+- [x] Swagger/Slate/Postman integration
 - [ ] Code Refactor
 - [ ] Scheduling using Sidekiq
 - [ ] Airbrake
