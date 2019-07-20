@@ -27,6 +27,7 @@ class Category < ApplicationRecord
       debitable: 1
   }
 
+  # todo(juneja) add a standard category type and make this non nullable
   enum category_type: {
       internal_transfer: 0
   }
