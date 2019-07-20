@@ -1,4 +1,4 @@
-# ![Gringotts](https://media.giphy.com/media/rip-city-VPnTqJLUwCv60.gif)
+# ![Gringotts](https://media.giphy.com/media/VPnTqJLUwCv60/giphy.gif)
 
 ## Index
 - [Summary](#summary)
@@ -11,13 +11,15 @@
 
 ## Summary
 
-[Gringotts]() is a personal expense tracker built using [Ruby](), [Ruby on Rails]() and [React](). Future scope includes some light weight ML modelling such as [K Means]() or [Multiple Regression]() to provide preemptive insights of expenses and visualizations using [Pandas]()/[Bokeh]()/[Seaborn]()
+[Gringotts](https://harrypotter.fandom.com/wiki/Gringotts_Wizarding_Bank) is a personal expense tracker built using [Ruby](https://www.ruby-lang.org/en/), [Ruby on Rails](https://rubyonrails.org/) and [React](https://reactjs.org/). Future scope includes some light weight ML modeling such as [K Means](https://en.wikipedia.org/wiki/K-means_clustering) or [Multiple Regression](https://en.wikipedia.org/wiki/Linear_regression#Simple_and_multiple_linear_regression) to provide preemptive insights of expenses and visualizations using [Pandas](https://pandas.pydata.org/)/[Bokeh](https://bokeh.pydata.org/en/latest/)/[Seaborn](https://seaborn.pydata.org/)
 
 The problem this project tries to solve is that of building a personal application for managing one's expenses. The technical goals of this project was to implement production grade Rails and React project which can be consumed with multi tenant or individual deployment.
 
 **The project is heavily inspired by [You Need A Budget]() and [Walnut]() but has a pro privacy stance i.e. you are in direct control of your data.**
 
-The expense management follows the age old paradigm of the Envelop System where you create outflow buckets. Categorical expense are made using these buckets. For example, you might have three buckets such as Recreation, Groceries and Self Development. At the start of the cycle, you may credit funds from another bucket, say Salary, and consume/debit funds from these buckets in the form of Expenses eg. Yoga Class (Self Dev bucket), Watching a play (Recreation), Eggs and Ham (Groceries).
+The expense management follows the age old paradigm of the [Envelop System](https://www.moneycrashers.com/envelope-budgeting-system/) where you create outflow buckets. Categorical expense are made using these buckets.
+
+For example, you might have three buckets such as Recreation, Groceries and Self Development. At the start of the cycle, you may credit funds from another bucket, say Salary, and consume/debit funds from these buckets in the form of Expenses eg. Yoga Class (Self Dev bucket), Watching a play (Recreation), Eggs and Ham (Groceries).
 
 You can create Internal Transfer between these buckets as well, for example, I might have two buckets, Salary and Cash. I can do an internal from Salary to Cash to replenish my cash reservers.
 
@@ -25,14 +27,15 @@ This repository stores the code for the Backend for the project. The Frontend co
 
 In case of any questions or queries please reach out to @abhn or @darth-dodo.
 
-![Cheers!](https://media.giphy.com/media/movie-party-harry-potter-OU1marLMNNtnO.gif)
+![Cheers!](https://media.giphy.com/media/OU1marLMNNtnO/giphy.gif)
 
+---
 
-## Setup
+## Installation
 ### Local instructions
-- Make sure you have a [Postgres]() version greater than 9.6
+- Make sure you have a [Postgres](http://postgresguide.com/) version greater than 9.6
 - Clone the repo
-- Use [RVM]() to install and set ruby to version 2.6.0
+- Use [RVM](https://rvm.io/) to install and set ruby to version 2.6.0
 - Run `bundle install`
 - Create development postgres db using the command `createdb gringotts_dev` as mentioned in the `database.yml`
 - Run `rake db:migrate` to create all the database objects in your local db
