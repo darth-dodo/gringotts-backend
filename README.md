@@ -1,10 +1,41 @@
-# gringotts-backend
+# Gringotts
 
-## Local instructions
+<div style="width:100%;height:0;padding-bottom:56%;position:relative;"><iframe src="https://giphy.com/embed/VPnTqJLUwCv60" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/rip-city-VPnTqJLUwCv60">via GIPHY</a></p>
+
+## Index
+- [Summary](#summary)
+- [Installation](#installation)
+- [Demo](#demo)
+- [API Documentation](#api-documentation)
+- [Education Resources](#education-resources)
+- [Future Scope](#future-scope)
+- [Feature Pipeline](#feature-pipeline)
+
+## Summary
+
+[Gringotts]() is a personal expense tracker built using [Ruby](), [Ruby on Rails]() and [React](). Future scope includes some light weight ML modelling such as [K Means]() or [Multiple Regression]() to provide preemptive insights of expenses and visualizations using [Pandas]()/[Bokeh]()/[Seaborn]()
+
+The problem this project tries to solve is that of building a personal application for managing one's expenses. The technical goals of this project was to implement production grade Rails and React project which can be consumed with multi tenant or individual deployment.
+
+**The project is heavily inspired by [You Need A Budget]() and [Walnut]() but has a pro privacy stance i.e. you are in direct control of your data.**
+
+The expense management follows the age old paradigm of the Envelop System where you create outflow buckets. Categorical expense are made using these buckets. For example, you might have three buckets such as Recreation, Groceries and Self Development. At the start of the cycle, you may credit funds from another bucket, say Salary, and consume/debit funds from these buckets in the form of Expenses eg. Yoga Class (Self Dev bucket), Watching a play (Recreation), Eggs and Ham (Groceries).
+
+You can create Internal Transfer between these buckets as well, for example, I might have two buckets, Salary and Cash. I can do an internal from Salary to Cash to replenish my cash reservers.
+
+This repository stores the code for the Backend for the project. The Frontend code base can be found [over here].()
+
+In case of any questions or queries please reach out to @abhn or @darth-dodo.
+
+Cheers!
+
+
+## Setup
+### Local instructions
+- Make sure you have a [Postgres]() version greater than 9.6
 - Clone the repo
-- Use RVM to install and set ruby to version 2.6.0
+- Use [RVM]() to install and set ruby to version 2.6.0
 - Run `bundle install`
-- Install Postgres
 - Create development postgres db using the command `createdb gringotts_dev` as mentioned in the `database.yml`
 - Run `rake db:migrate` to create all the database objects in your local db
 - Run `rake db:seed` to create the first user with the credential
@@ -13,167 +44,50 @@
 - Run the local server using the command `rails s`
 - Hop on to the site and go to `<your-localhost-with-port>/admin`
 - Use the above creds to log into the admin panel
+- Have fun tinkering around!
 
-## Heroku
-- The dev app is hosted at [gringotts-backend.herokuapp.com](https://gringotts-backend.herokuapp.com)
+### Heroku
+- TBD
 
+## Demo
+- The Backend sandbox app is hosted at [gringotts-backend.herokuapp.com](https://gringotts-backend.herokuapp.com)
+- Use the above creds listed above to play around.
 
-## Lame API Docs
+## API Documentation
+- [The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)
 
-### Signup
-- URL: POST /signup/
-```json
-{
-  "email": "demo@gg.com",
-  "password": "demouserfordemo"
-}
-```
+## Education Resources
+- While working on anything, we tend to come across educational resources which help us in getting better and understanding a problem as well as it's solution on a deeper level
+- The [Education Resources](https://github.com/darth-dodo/gringotts-backend/blob/master/EducationalResources.md) file is a place we have listed down the resources we referred to while working on this project for giving a deeper context and through learning to the reader if required.
 
-### Login to extract the JWT
-- URL: POST /auth/login/
-```json
-{
-  "email": "demo@gg.com",
-  "password": "demouserfordemo"
-}
-```
+## Future Scope
+- The ideal end state of this project is an automated system which extracts majority of your expense related information using your digital footprint (Bank Statements, SMSes, Emails)
+- Using this information help you extract some insights such projected expenses, top spending categories or tags or push you towards goal based savings
+- In order to achieve these goals, once we have a stable, simple and straightforward Web App which just takes in expenses and stored them, we will move to some basic visualizations and dashboards where the user can infer insights from the metrics and stats
 
-### Account
-- URL: GET /accounts/
-- URL: GET /accounts/id/
-- URL: POST /accounts/
-
-```json
-{
-  "name": "Salary"
-}
-```
-
-```json
-{
-  "name": "Cash Wallet"
-}
-```
-- URL: PUT /accounts/id/
-
-```json
-{
-  "name": "Wallet"
-}
-```
-
-- URL: POST /accounts/1/toggle-favorite
-```
-No payload
-```
-
-
-### Category
-- URL: GET /categories/
-- URL: GET /categories/id/
-
-**Gotta remove eligible_mode**
-- URL: POST /categories/
-
-```json
-{
-  "name": "Salary",
-  "eligible_mode": "creditable"
-}
-```
-
-```json
-{
-  "name": "Commute",
-  "eligible_mode": "debitable"
-}
-```
-
-```json
-{
-  "name": "Cash Transfer",
-  "eligible_mode": "creditable",
-  "category_type": "internal_transfer"
-}
-```
-- URL: PUT /categories/id/
-```json
-{
-  "name": "Cash Refill"
-}
-```
-
-- URL: POST /categories/1/toggle-favorite
-```
-No payload
-```
-
-
-### Expense Log
-- URL: POST /expense_logs/
-
-```json
-{
-  "account_id":1,
-  "category_id":1,
-  "amount":50000,
-  "mode": "credit",
-  "note":"Salary Credit",
-  "tag_list": ["paisa", "paishe"]
-}
-```
-
-```json
-{
-  "user_id":7,
-  "account_id":4,
-  "destination_account_id": 3,
-  "category_id":2,
-  "amount":500,
-  "mode": "debit",
-  "note":"Wallet refill from new salary",
-  "tag_list": ["oops"]
-}
-```
-
-- URL: PUT /expense_logs/1/
-```json
-{
-  "tag_list": ["chai, samosa"],
-  "note": "Money for snacks!"
-}
-```
-
-- URL: POST /expense_logs/1/toggle-favorite
-```
-No payload
-```
-
-
-### Internal Transfer Log
-- URL: GET /internal-transfer-logs/
-- URL: GET /internal-transfer-logs/id/
-
---
-
-
-## ToDo
-- [ ] Specs setup
-- [ ] Swagger
-- [ ] Async using 
+### Feature Pipeline
+- [x] [APIfying](https://github.com/darth-dodo/gringotts-backend/pull/9)
+- [x] [Lame API documentation](https://github.com/darth-dodo/gringotts-backend/pull/11)
+- [x] [PaperTrail](https://github.com/darth-dodo/gringotts-backend/pull/13)
+- [x] Polymorphic demo:
+  - [x] [Likeable (custom)](https://github.com/darth-dodo/gringotts-backend/pull/14)
+  - [x] [Taggable (gem)](https://github.com/darth-dodo/gringotts-backend/pull/15)
+- [ ] Swagger/Slate integration
+- [ ] Code Refactor
+- [ ] Scheduling using Sidekiq
+- [ ] Airbrake
 - [ ] Heroku add ons
     - [ ] Database backup
     - [ ] Scheduler
-    - [ ] Airbrake
+    - [ ] Database browser
 - [ ] YAML based config
-- [x] APIfying
-- [ ] Polymorphic demo:
-    - [x] Likeable (custom)
-    - [x] Taggable (gem)
+- [ ] Specs setup
 - [ ] OAuth
-- [x] PaperTrail
 - [ ] Fast Json API
 - [ ] Query Optimization
 - [ ] Refactor part 1
 - [ ] CSV downloads
 - [ ] Filters (based on FE)
+
+
+<div style="width:100%;height:0;padding-bottom:58%;position:relative;"><iframe src="https://giphy.com/embed/OU1marLMNNtnO" width="100%" height="100%" style="position:absolute" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/movie-party-harry-potter-OU1marLMNNtnO">via GIPHY</a></p>
