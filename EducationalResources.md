@@ -39,3 +39,6 @@
 
 # Gems
 - http://www.carlosramireziii.com/how-to-add-active-admin-to-a-rails-5-api-application.html
+
+# Active Admin
+- https://code.tutsplus.com/tutorials/create-beautiful-administration-interfaces-with-active-admin--net-21729

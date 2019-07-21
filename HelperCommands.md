@@ -9,7 +9,7 @@
 - `rake db:seed` for running the seeding operations
 - For generation model level annotations use the following command
 ```sh
-annotate --exclude tests,fixtures,factories,serializers -p bottom -i --show-indexes -k --show-foreign-keys -s --classified-sort
+annotate --exclude tests,fixtures,factories,serializers -p top -i --show-indexes -k --show-foreign-keys -s --classified-sort
 ```
 - Drop db, create db, migrate db, seed db
 ```sh
