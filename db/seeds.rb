@@ -14,7 +14,7 @@ def create_seed_users
                    },
                    {
                        email: 'demo@gringotts.com',
-                       password: "demodemodemodemodemodemodemo"
+                       password: "demo-user-for-sandbox"
                    }
                ])
 end
@@ -158,4 +158,3 @@ if Rails.env.development?
   print_jwt_token
 
 end
-
