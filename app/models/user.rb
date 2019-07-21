@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :categories
   has_many :accounts
   has_many :expense_logs
+  has_many :internal_transfer_logs, through: :expense_logs
 
   # favorites and through relations
   has_many :favorites, inverse_of: :user
