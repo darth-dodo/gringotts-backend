@@ -43,24 +43,29 @@ Cheers!
 - Run `bundle install`
 - Create development postgres db using the command `createdb gringotts_dev` as mentioned in the `database.yml`
 - Run `rake db:migrate` to create all the database objects in your local db
-- Run `rake db:seed` to create the first user with the credential
-    - Username: admin@gringotts.com
-    - Password: `get_rich_or_die_codin`
+- Run `rake db:seed` to create the a couple of users
+    - Admin User
+      - Username: admin@gringotts.com
+      - Password: `get_rich_or_die_codin`
+    - Demo User
+      - Username: demo@gringotts.com,
+      - Password: `demo-user-for-sandbox`
 - Run the local server using the command `rails s`
 - Hop on to the site and go to `<your-localhost-with-port>/admin`
-- Use the above creds to log into the admin panel
+- Use the above credentials to log into the admin panel
 - Have fun tinkering around!
 
 ### Heroku
 - TBD
 
 ## Demo
-- The Backend sandbox app is hosted at [gringotts-backend.herokuapp.com](https://gringotts-backend.herokuapp.com)
-- Use the above creds listed above to play around.
+- The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
+- The Backend sandbox can be accessed using [Active Admin](https://github.com/activeadmin/activeadmin) at [https://gringotts-backend.herokuapp.com/admin](https://gringotts-backend.herokuapp.com/admin)
+- Feel free to use the above credentials listed above to play around the backend with Active Admin interface.
 
 ## API Documentation
 - ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
-- [API Docs using Postman](https://documenter.getpostman.com/view/8196826/SVSNJnWy?version=latest)
+- [API Documentation generated using Postman](https://documenter.getpostman.com/view/8196826/SVSNJnWy?version=latest)
 
 ## Education Resources
 - While working on anything, we tend to come across educational resources which help us in getting better and understanding a problem as well as it's solution on a deeper level
@@ -79,19 +84,19 @@ Cheers!
 - [x] Polymorphic demo:
   - [x] [Likeable (custom)](https://github.com/darth-dodo/gringotts-backend/pull/14)
   - [x] [Taggable (gem)](https://github.com/darth-dodo/gringotts-backend/pull/15)
-- [x] Swagger/Slate/Postman integration
-- [ ] Code Refactor
-- [ ] Scheduling using Sidekiq
+- [x] [Swagger/Slate/Postman integration](https://github.com/darth-dodo/gringotts-backend/pull/19)
+- [ ] Active Admin setup
 - [ ] Airbrake
 - [ ] Heroku add ons
-    - [ ] Database backup
-    - [ ] Scheduler
-    - [ ] Database browser
+    - [ ] Database backup (Autobus)
+    - [ ] Scheduler (Heroku Scheduler)
+    - [ ] Database browser (Trevor)
+- [ ] Scheduling using Sidekiq
 - [ ] YAML based config
 - [ ] Specs setup
-- [ ] OAuth
-- [ ] Fast Json API
-- [ ] Query Optimization
-- [ ] Refactor part 1
+- [ ] OAuth with Google and Github
+- [ ] Integration with Netflix's Fast JSON API and response refactoring
+- [ ] Code Refactor pair programming with [@abhn](https://github.com/abhn)
+- [ ] Query Optimization with [@abhn](https://github.com/abhn)
 - [ ] CSV downloads
 - [ ] Filters (based on FE)
