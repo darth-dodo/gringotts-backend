@@ -1,7 +1,6 @@
 ActiveAdmin.register ExpenseLog do
   actions :index, :show
   scope_to :current_user
-  permit_params :amount, :mode, :note, :account, :category, :user
 
   index do
     column :user
