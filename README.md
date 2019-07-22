@@ -31,7 +31,7 @@ In case of any questions, queries or suggestions please reach out to @abhn or @d
 
 Cheers!
 
-![everyday-i-am-dumblin](https://media.giphy.com/media/OU1marLMNNtnO/giphy.gif)
+![everyday-i-am-dumblin](https://media.giphy.com/media/emITthtRQb5ok/source.gif)
 
 ---
 
