@@ -37,6 +37,9 @@ gem 'paper_trail-association_tracking' # require this for running active admin
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
+gem "sentry-raven"
+
+
 
 
 # Use ActiveStorage variant

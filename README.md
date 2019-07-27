@@ -87,7 +87,7 @@ Cheers!
   - [x] [Taggable (gem)](https://github.com/darth-dodo/gringotts-backend/pull/15)
 - [x] [Swagger/Slate/Postman integration](https://github.com/darth-dodo/gringotts-backend/pull/19)
 - [x] [Active Admin setup](https://github.com/darth-dodo/gringotts-backend/pull/22)
-- [ ] Airbrake
+- [x] [Airbrake/Sentry](https://github.com/darth-dodo/gringotts-backend/pull/25)
 - [ ] Heroku add ons
     - [ ] Database backup (Autobus)
     - [ ] Scheduler (Heroku Scheduler)
