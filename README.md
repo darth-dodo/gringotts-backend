@@ -92,7 +92,7 @@ Cheers!
     - [x] Database backup (Autobus)
     - [x] Scheduler (Heroku Scheduler)
     - [x] Database browser (Trevor)
-- [x] Scheduling using Sidekiq
+- [x] [Scheduling using Sidekiq](https://github.com/darth-dodo/gringotts-backend/pull/26)
 - [ ] YAML based config
 - [ ] Specs setup
 - [ ] OAuth with Google and Github
