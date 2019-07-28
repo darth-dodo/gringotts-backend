@@ -61,7 +61,7 @@ Cheers!
 ## Demo
 - The Backend sandbox can be accessed using [Active Admin](https://github.com/activeadmin/activeadmin) at [https://gringotts-backend.herokuapp.com/admin](https://gringotts-backend.herokuapp.com/admin)
 - The high level Dashboard can be viewed over [here](https://gringotts-backend.herokuapp.com/admin/dashboard) using Active Admin interface
-- Deeper Data Analytics and SQL exploration can be done over a **[Metabase]** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials
+- Deeper Data Analytics and SQL exploration can be done over a **[Metabase](https://metabase.com/)** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials
   - Username: demo@gringotts.com
   - Password: `demo-user-for-sandbox123`
 - [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
