@@ -59,10 +59,11 @@ Cheers!
 - TBD
 
 ## Demo
-- The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
 - The Backend sandbox can be accessed using [Active Admin](https://github.com/activeadmin/activeadmin) at [https://gringotts-backend.herokuapp.com/admin](https://gringotts-backend.herokuapp.com/admin)
 - Feel free to use the above credentials listed above to play around the backend with Active Admin interface.
 - The high level Dashboard can be view over [here](https://gringotts-backend.herokuapp.com/admin/dashboard)
+- SQL Exploration using [Trevor.io](https://trevor.io/) (similar to [Metabase](https://metabase.com/)) can be found over [here](https://trevor.io/datasources/d4b1dda4-a964-4028-a4e1-c118100e5c0b#rr=33c61763-51a3-4e23-97bf-764489000bc4)
+- [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
 
 ## API Documentation
 - ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
