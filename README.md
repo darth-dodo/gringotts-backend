@@ -60,9 +60,10 @@ Cheers!
 
 ## Demo
 - The Backend sandbox can be accessed using [Active Admin](https://github.com/activeadmin/activeadmin) at [https://gringotts-backend.herokuapp.com/admin](https://gringotts-backend.herokuapp.com/admin)
-- Feel free to use the above credentials listed above to play around the backend with Active Admin interface.
-- The high level Dashboard can be view over [here](https://gringotts-backend.herokuapp.com/admin/dashboard)
-- SQL Exploration using [Trevor.io](https://trevor.io/) (similar to [Metabase](https://metabase.com/)) can be found over [here](https://trevor.io/datasources/d4b1dda4-a964-4028-a4e1-c118100e5c0b#rr=33c61763-51a3-4e23-97bf-764489000bc4)
+- The high level Dashboard can be viewed over [here](https://gringotts-backend.herokuapp.com/admin/dashboard) using Active Admin interface
+- Deeper Data Analytics and SQL exploration can be done over a **[Metabase]** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/] using the following credentials
+  - Username: demo@gringotts.com
+  - Password: `demo-user-for-sandbox123`
 - [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
 
 ## API Documentation
@@ -94,6 +95,7 @@ Cheers!
     - [x] Scheduler (Heroku Scheduler)
     - [x] Database browser (Trevor)
 - [x] [Scheduling using Sidekiq](https://github.com/darth-dodo/gringotts-backend/pull/26)
+- [x] [Data Analytics and SQL Exploration using sister Metabase App](https://github.com/darth-dodo/gringotts-backend/pull/28)
 - [ ] YAML based config
 - [ ] Specs setup
 - [ ] OAuth with Google and Github
