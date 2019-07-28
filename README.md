@@ -7,7 +7,7 @@
 - [Installation](#installation)
 - [Demo](#demo)
 - [API Documentation](#api-documentation)
-- [Education Resources](#education-resources)
+- [Educational Resources](#educational-resources)
 - [Future Scope](#future-scope)
 - [Feature Pipeline](#feature-pipeline)
 
@@ -68,9 +68,9 @@ Cheers!
 - ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
 - [API Documentation generated using Postman](https://documenter.getpostman.com/view/8196826/SVSNJnWy?version=latest)
 
-## Education Resources
+## Educational Resources
 - While working on anything, we tend to come across educational resources which help us in getting better and understanding a problem as well as it's solution on a deeper level
-- The [Education Resources](https://github.com/darth-dodo/gringotts-backend/blob/master/EducationalResources.md) file is a place we have listed down the resources we referred to while working on this project for giving a deeper context and through learning to the reader if required.
+- The [Educational Resources](https://github.com/darth-dodo/gringotts-backend/blob/master/EducationalResources.md) file is a place we have listed down the resources we referred to while working on this project for giving a deeper context and through learning to the reader if required.
 
 ## Future Scope
 - Move it from being a **tracker** to a **manager**
@@ -88,11 +88,11 @@ Cheers!
 - [x] [Swagger/Slate/Postman integration](https://github.com/darth-dodo/gringotts-backend/pull/19)
 - [x] [Active Admin setup](https://github.com/darth-dodo/gringotts-backend/pull/22)
 - [x] [Airbrake/Sentry](https://github.com/darth-dodo/gringotts-backend/pull/25)
-- [ ] Heroku add ons
-    - [ ] Database backup (Autobus)
-    - [ ] Scheduler (Heroku Scheduler)
-    - [ ] Database browser (Trevor)
-- [ ] Scheduling using Sidekiq
+- [x] Heroku add ons
+    - [x] Database backup (Autobus)
+    - [x] Scheduler (Heroku Scheduler)
+    - [x] Database browser (Trevor)
+- [x] Scheduling using Sidekiq
 - [ ] YAML based config
 - [ ] Specs setup
 - [ ] OAuth with Google and Github

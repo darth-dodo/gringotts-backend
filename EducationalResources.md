@@ -57,3 +57,5 @@
 - https://github.com/mperham/sidekiq/wiki/Using-Redis
 - https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
 - https://guides.rubyonrails.org/autoloading_and_reloading_constants.html
+- https://dev.to/jamby1100/coding-sidekiq-workers-the-right-way-4jij
+- https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
