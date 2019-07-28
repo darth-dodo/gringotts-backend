@@ -17,6 +17,9 @@ module GringottsBackend
 
     config.filter_parameters << :password
 
+    config.active_job.queue_adapter = :sidekiq
+
+
 
     # todo(juneja) generate new keys once moved to yaml based config
     Raven.configure do |config|

@@ -40,7 +40,7 @@ gem 'acts-as-taggable-on', '~> 6.0'
 gem "sentry-raven"
 
 
-
+gem 'sidekiq'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

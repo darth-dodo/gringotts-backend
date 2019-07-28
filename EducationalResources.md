@@ -49,3 +49,13 @@
 
 # Active Admin
 - https://code.tutsplus.com/tutorials/create-beautiful-administration-interfaces-with-active-admin--net-21729
+
+# Scheduling using Sidekiq
+- https://github.com/mperham/sidekiq/wiki/Active-Job
+- https://github.com/mperham/sidekiq/wiki/Getting-Started
+- https://stackoverflow.com/questions/30233977/how-can-i-get-activejob-to-enqueue-jobs-in-sidekiq-on-heroku-when-called-from-th/30242840#30242840
+- https://github.com/mperham/sidekiq/wiki/Using-Redis
+- https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
+- https://guides.rubyonrails.org/autoloading_and_reloading_constants.html
+- https://dev.to/jamby1100/coding-sidekiq-workers-the-right-way-4jij
+- https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
