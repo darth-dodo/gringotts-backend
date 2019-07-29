@@ -27,6 +27,7 @@ class Category < ApplicationRecord
       debitable: 1
   }
 
+  # todo(juneja) add a standard category type and make this non nullable
   enum category_type: {
       internal_transfer: 0
   }
@@ -48,6 +49,7 @@ class Category < ApplicationRecord
   validates_presence_of :eligible_mode
 
   validates_uniqueness_of :name, scope: :user_id
+  validates_uniqueness_of :slug, scope: :user_id
 
   # scopes
   scope :for_user, ->(user) { where(user_id: user.id) }

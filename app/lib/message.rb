@@ -31,4 +31,8 @@ class Message
     'Account successfully created!'
   end
 
+  def self.default_error_message
+    'Something went wrong!'
+  end
+
 end

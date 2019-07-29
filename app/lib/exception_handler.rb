@@ -1,22 +1,15 @@
-module ExceptionHandler  extend ActiveSupport::Concern
+module ExceptionHandler extend ActiveSupport::Concern
 
   class AuthenticationError < StandardError; end
   class MissingToken < StandardError; end
   class InvalidToken < StandardError; end
 
   class GringottsValidationError < StandardError
-    def initialize(message = nil, status_code = nil)
-      @message = message
+    attr_reader :log_level, :message
+    def initialize(message = nil, status_code = nil, log_level = nil)
+      @message = message || Message.default_error_message
+      @log_level = log_level
     end
-
-    def message
-      @message.present? ? @message : "Something went wrong!"
-    end
-
-    def status_code_handler
-      :bad_request
-    end
-
   end
 
   included do
@@ -30,19 +23,29 @@ module ExceptionHandler  extend ActiveSupport::Concern
 
   private
 
+  def alert_sentry(e)
+    # todo(juneja) move the sentry log level to env
+    log_level = e.log_level.present? ? e.log_level : "error"
+    Raven.capture_exception(e, level: log_level)
+  end
+
   def record_not_found(e)
+    alert_sentry(e)
     json_response( { message: Message.not_found }, :not_found)
   end
 
   def four_twenty_two(e)
+    alert_sentry(e)
     json_response({ message: e.message }, :unprocessable_entity)
   end
 
   def four_zero_zero(e)
+    alert_sentry(e)
     json_response({ message: e.message }, :bad_request)
   end
 
   def unauthorized_request(e)
+    alert_sentry(e)
     json_response({ message: e.message }, :unauthorized)
   end
 

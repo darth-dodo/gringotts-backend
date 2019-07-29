@@ -38,7 +38,10 @@ gem 'paper_trail-association_tracking' # require this for running active admin
 
 gem 'acts-as-taggable-on', '~> 6.0'
 
+gem "sentry-raven"
 
+
+gem 'sidekiq'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

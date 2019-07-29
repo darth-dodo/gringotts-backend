@@ -17,6 +17,13 @@
 - https://hackernoon.com/the-3-tenets-of-service-objects-c936b891b3c2
 - https://medium.com/selleo/essential-rubyonrails-patterns-part-1-service-objects-1af9f9573ca1
 
+# Exception Handling
+- https://apidock.com/rails/ActiveSupport/Rescuable/ClassMethods/rescue_from
+- https://simonecarletti.com/blog/2009/12/inside-ruby-on-rails-rescuable-and-rescue_from/
+- https://medium.com/rails-ember-beyond/error-handling-in-rails-the-modular-way-9afcddd2fe1b
+- https://stackify.com/rescue-exceptions-ruby/
+- http://www.monkeyandcrow.com/blog/reading_rails_handling_exceptions/
+
 # Forms
 - https://medium.com/selleo/essential-rubyonrails-patterns-form-objects-b199aada6ec9
 
@@ -39,3 +46,16 @@
 
 # Gems
 - http://www.carlosramireziii.com/how-to-add-active-admin-to-a-rails-5-api-application.html
+
+# Active Admin
+- https://code.tutsplus.com/tutorials/create-beautiful-administration-interfaces-with-active-admin--net-21729
+
+# Scheduling using Sidekiq
+- https://github.com/mperham/sidekiq/wiki/Active-Job
+- https://github.com/mperham/sidekiq/wiki/Getting-Started
+- https://stackoverflow.com/questions/30233977/how-can-i-get-activejob-to-enqueue-jobs-in-sidekiq-on-heroku-when-called-from-th/30242840#30242840
+- https://github.com/mperham/sidekiq/wiki/Using-Redis
+- https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
+- https://guides.rubyonrails.org/autoloading_and_reloading_constants.html
+- https://dev.to/jamby1100/coding-sidekiq-workers-the-right-way-4jij
+- https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
