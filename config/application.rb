@@ -11,6 +11,14 @@ module GringottsBackend
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    # https://github.com/cyu/rack-cors
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :put, :options]
+      end
+    end
+
     config.middleware.use ActionDispatch::Flash
     config.middleware.use ActionDispatch::Cookies
     config.middleware.use ActionDispatch::Session::CookieStore
