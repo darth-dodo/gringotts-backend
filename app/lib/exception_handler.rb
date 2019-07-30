@@ -30,22 +30,18 @@ module ExceptionHandler extend ActiveSupport::Concern
   end
 
   def record_not_found(e)
-    alert_sentry(e)
     json_response( { message: Message.not_found }, :not_found)
   end
 
   def four_twenty_two(e)
-    alert_sentry(e)
     json_response({ message: e.message }, :unprocessable_entity)
   end
 
   def four_zero_zero(e)
-    alert_sentry(e)
     json_response({ message: e.message }, :bad_request)
   end
 
   def unauthorized_request(e)
-    alert_sentry(e)
     json_response({ message: e.message }, :unauthorized)
   end
 
