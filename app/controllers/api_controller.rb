@@ -19,8 +19,7 @@ class ApiController < ActionController::API
 
   # todo(juneja) check if this sentry code can be moved to a concern
   def set_raven_context!
-    return if @current_user.blank?
-    Raven.user_context(id: @current_user.id)
+    @current_user.blank? ? Raven.user_context(id: nil) : Raven.user_context(id: @current_user.id)
     Raven.extra_context(generate_sentry_params)
   end
 
