@@ -27,7 +27,7 @@ You can create Internal Transfer between these buckets as well, for example, I m
 
 Future scope includes using some light weight ML modeling such as [K Means](https://en.wikipedia.org/wiki/K-means_clustering) or [Multiple Regression](https://en.wikipedia.org/wiki/Linear_regression#Simple_and_multiple_linear_regression) to provide preemptive insights of expenses and visualizations using [Pandas](https://pandas.pydata.org/)/[Bokeh](https://bokeh.pydata.org/en/latest/)/[Seaborn](https://seaborn.pydata.org/)
 
-In case of any questions, queries or suggestions please reach out to @abhn or @darth-dodo.
+In case of any questions, queries or suggestions please reach out to [@abhn](https://github.com/abhn) or [@darth-dodo](https://www.github.com/darth-dodo).
 
 Cheers!
 
@@ -61,7 +61,7 @@ Cheers!
 ## Demo
 - The Backend sandbox can be accessed using [Active Admin](https://github.com/activeadmin/activeadmin) at [https://gringotts-backend.herokuapp.com/admin](https://gringotts-backend.herokuapp.com/admin)
 - The high level Dashboard can be viewed over [here](https://gringotts-backend.herokuapp.com/admin/dashboard) using Active Admin interface
-- Deeper Data Analytics and SQL exploration can be done over a **[Metabase](https://metabase.com/)** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials
+- Deeper Data Analytics and SQL exploration can be done over a **[Metabase](https://metabase.com/)** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials. **Takes a while to load the Heroku app. Please reload the tab if required**
   - Username: demo@gringotts.com
   - Password: `demo-user-for-sandbox123`
 - A sample dashboard can be viewed over [here](http://gringotts-demo-metabase.herokuapp.com/public/dashboard/a5f643ea-cb1b-478f-b399-8349141b8990)  
@@ -98,11 +98,13 @@ Cheers!
 - [x] [Scheduling using Sidekiq](https://github.com/darth-dodo/gringotts-backend/pull/26)
 - [x] [Data Analytics and SQL Exploration using sister Metabase App](https://github.com/darth-dodo/gringotts-backend/pull/28)
 - [ ] RSpec
-    - [ ] Specs setup
+    - [x] RSpec setup
+    - [x] FactoryBot Setup
     - [ ] Model Specs
     - [ ] Auth Specs
     - [ ] Service Specs
     - [ ] Controller Specs
+    - [ ] Check out factory pattern for test cases recommended by [Dj](https://github.com/djpandit007)
 - [ ] YAML based config
 - [ ] OAuth with Google and Github
 - [ ] Integration with Netflix's Fast JSON API and response refactoring
