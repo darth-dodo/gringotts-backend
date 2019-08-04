@@ -65,3 +65,5 @@
 - https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
 - https://github.com/thoughtbot/shoulda-matchers#getting-started
 - https://www.rubyguides.com/2018/07/rspec-tutorial/
+- https://www.rubydoc.info/github/thoughtbot/shoulda-matchers/master/Shoulda%2FMatchers%2FActiveRecord:define_enum_for
+- https://github.com/thoughtbot/shoulda-matchers/issues/967

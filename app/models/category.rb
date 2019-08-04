@@ -7,10 +7,13 @@ class Category < ApplicationRecord
   include FavoritableConcern
 
   module Constants
-    IMMUTABLE_FIELDS = [:eligible_mode,
-    :category_type
+    IMMUTABLE_FIELDS = [
+        :eligible_mode,
+        :category_type,
+        :user_id
     ].freeze
-    # category_mode: log_mode
+
+    # category_mode: expense_log_mode
     MODE_MAPPINGS = {
         creditable: [:credit],
         debitable: [:debit]
@@ -36,7 +39,6 @@ class Category < ApplicationRecord
   belongs_to :user
   has_many :expense_logs
   has_many :favorites, as: :favoritable
-
 
 
   # validations
