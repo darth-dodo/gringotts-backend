@@ -27,6 +27,8 @@ module GringottsBackend
 
     config.active_job.queue_adapter = :sidekiq
 
+    config.factory_bot.definition_file_paths = ["spec/factories"]
+
 
 
     # todo(juneja) generate new keys once moved to yaml based config

@@ -59,3 +59,7 @@
 - https://guides.rubyonrails.org/autoloading_and_reloading_constants.html
 - https://dev.to/jamby1100/coding-sidekiq-workers-the-right-way-4jij
 - https://itnext.io/sidekiq-overview-and-how-to-deploy-it-to-heroku-b8811fea9347
+
+# RSpec
+- https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
+- https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
