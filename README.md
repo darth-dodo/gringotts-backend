@@ -64,8 +64,8 @@ Cheers!
 - Deeper Data Analytics and SQL exploration can be done over a **[Metabase](https://metabase.com/)** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials
   - Username: demo@gringotts.com
   - Password: `demo-user-for-sandbox123`
+- A sample dashboard can be viewed over [here](http://gringotts-demo-metabase.herokuapp.com/public/dashboard/a5f643ea-cb1b-478f-b399-8349141b8990)  
 - [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
-- <iframe src="http://gringotts-demo-metabase.herokuapp.com/public/dashboard/a5f643ea-cb1b-478f-b399-8349141b8990" frameborder="0" width="800" height="600" allowtransparency></iframe>
 
 ## API Documentation
 - ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
