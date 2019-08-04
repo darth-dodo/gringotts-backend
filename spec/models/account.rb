@@ -1,6 +1,14 @@
 require "rails_helper"
 
 RSpec.describe Account, type: :model do
+
+  describe "Validations" do
+      it { should validate_presence_of(:name) }
+      it { should validate_presence_of(:slug) }
+      it { should validate_presence_of(:slug) }
+      it { should validate_presence_of(:user).with_message("should belong to a user!") }
+    end
+
   context "with 2 accounts" do
     it "create two accounts" do
 
