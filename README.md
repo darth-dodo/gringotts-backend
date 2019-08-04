@@ -64,6 +64,7 @@ Cheers!
 - Deeper Data Analytics and SQL exploration can be done over a **[Metabase](https://metabase.com/)** instance deployed on Heroku at [https://gringotts-demo-metabase.herokuapp.com/](https://gringotts-demo-metabase.herokuapp.com/) using the following credentials
   - Username: demo@gringotts.com
   - Password: `demo-user-for-sandbox123`
+- A sample dashboard can be viewed over [here](http://gringotts-demo-metabase.herokuapp.com/public/dashboard/a5f643ea-cb1b-478f-b399-8349141b8990)  
 - [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
 
 ## API Documentation
@@ -96,8 +97,13 @@ Cheers!
     - [x] Database browser (Trevor)
 - [x] [Scheduling using Sidekiq](https://github.com/darth-dodo/gringotts-backend/pull/26)
 - [x] [Data Analytics and SQL Exploration using sister Metabase App](https://github.com/darth-dodo/gringotts-backend/pull/28)
+- [ ] RSpec
+    - [ ] Specs setup
+    - [ ] Model Specs
+    - [ ] Auth Specs
+    - [ ] Service Specs
+    - [ ] Controller Specs
 - [ ] YAML based config
-- [ ] Specs setup
 - [ ] OAuth with Google and Github
 - [ ] Integration with Netflix's Fast JSON API and response refactoring
 - [ ] Code Refactor pair programming with [@abhn](https://github.com/abhn)
