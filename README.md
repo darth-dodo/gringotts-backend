@@ -65,6 +65,7 @@ Cheers!
   - Username: demo@gringotts.com
   - Password: `demo-user-for-sandbox123`
 - [WIP] The sandbox app is hosted at [https://gringotts.netlify.com](https://gringotts.netlify.com)
+- <iframe src="http://gringotts-demo-metabase.herokuapp.com/public/dashboard/a5f643ea-cb1b-478f-b399-8349141b8990" frameborder="0" width="800" height="600" allowtransparency></iframe>
 
 ## API Documentation
 - ~[The Lame API Docs can be found over here](https://github.com/darth-dodo/gringotts-backend/blob/master/LameAPIDocs.md)~
@@ -96,8 +97,13 @@ Cheers!
     - [x] Database browser (Trevor)
 - [x] [Scheduling using Sidekiq](https://github.com/darth-dodo/gringotts-backend/pull/26)
 - [x] [Data Analytics and SQL Exploration using sister Metabase App](https://github.com/darth-dodo/gringotts-backend/pull/28)
+- [ ] RSpec
+    - [ ] Specs setup
+    - [ ] Model Specs
+    - [ ] Auth Specs
+    - [ ] Service Specs
+    - [ ] Controller Specs
 - [ ] YAML based config
-- [ ] Specs setup
 - [ ] OAuth with Google and Github
 - [ ] Integration with Netflix's Fast JSON API and response refactoring
 - [ ] Code Refactor pair programming with [@abhn](https://github.com/abhn)
