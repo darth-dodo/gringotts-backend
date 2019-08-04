@@ -33,6 +33,7 @@ module GringottsBackend
     Raven.configure do |config|
       config.dsn = 'https://7d062d31b8364229ab7fb79a2615baff:2612a39996f9417aae62173ff511ff7c@sentry.io/1514939'
       config.excluded_exceptions += ['ActionController::RoutingError', 'ActiveRecord::RecordNotFound']
+      config.environments = %w[ production ]
     end
 
 
