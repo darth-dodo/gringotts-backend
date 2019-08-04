@@ -64,3 +64,4 @@
 - https://relishapp.com/rspec/rspec-rails/v/3-8/docs/gettingstarted
 - https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md
 - https://github.com/thoughtbot/shoulda-matchers#getting-started
+- https://www.rubyguides.com/2018/07/rspec-tutorial/
