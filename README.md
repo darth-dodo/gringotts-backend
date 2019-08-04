@@ -100,6 +100,7 @@ Cheers!
 - [ ] RSpec
     - [x] RSpec setup
     - [x] FactoryBot Setup
+    - [x] Shoulda Matcher Setup
     - [ ] Model Specs
     - [ ] Auth Specs
     - [ ] Service Specs

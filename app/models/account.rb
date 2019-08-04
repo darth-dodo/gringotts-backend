@@ -32,10 +32,6 @@ discuss with Nagekar the concept of passbook and wallet and wallet abstraction
 
   has_many :favorites, as: :favoritable
 
-
-
-
-
   # validations
   before_validation :validate_for_frozen_fields, on: :update
   before_validation :generate_slug, if: :name_changed?
