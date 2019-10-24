@@ -11,5 +11,4 @@ RSpec.describe Account, type: :model do
     it { should have_many(:favorite_accounts).through(:favorites).source(:favoritable) }
     it { should have_many(:favorite_expense_logs).through(:favorites).source(:favoritable) }
   end
-
 end
