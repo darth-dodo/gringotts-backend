@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Account, type: :model do
+RSpec.describe User, type: :model do
   describe "Associations" do
     it { should have_many(:categories) }
     it { should have_many(:accounts) }
