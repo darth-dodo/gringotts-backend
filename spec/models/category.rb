@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Account, type: :model do
+RSpec.describe Category, type: :model do
   describe "Associations" do
     it { should belong_to(:user) }
     it { should have_many(:expense_logs) }
